@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "bg_streed",
+    "texture": "0dddd776-7829-4536-b1df-1d6f380a3bfd",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      560,
+      109
+    ],
+    "offset": [
+      -0.5,
+      0
+    ],
+    "originalSize": [
+      561,
+      109
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "bullseye",
+    "texture": "4e167c04-361e-4dba-921f-9cf53b92b28d",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      75,
+      77
+    ],
+    "offset": [
+      -0.5,
+      0
+    ],
+    "originalSize": [
+      76,
+      77
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "bg_lbArrow",
+    "texture": "afbc9668-c900-4bfb-a028-bf6410fd5cdd",
+    "atlas": "",
+    "rect": [
+      0,
+      1,
+      155,
+      56
+    ],
+    "offset": [
+      -0.5,
+      -0.5
+    ],
+    "originalSize": [
+      156,
+      57
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

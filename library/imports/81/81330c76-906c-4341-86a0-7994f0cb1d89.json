@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "Tiny_archer_logo",
+    "texture": "822b1f6c-1f2c-485e-a706-2622748b18c1",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      384,
+      184
+    ],
+    "offset": [
+      0,
+      0.5
+    ],
+    "originalSize": [
+      384,
+      185
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
