@@ -5,33 +5,31 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import TiniArcher_Arrow from "./TiniArcher.Arrow";
-import { Global } from "./TiniArcher.Global";
+
 
 const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class TiniArcher_GameView extends cc.Component {
 
-
     @property(cc.ProgressBar)
     pgbPowerBar: cc.ProgressBar = null;
 
-    maxForce = 1000;  // Lực bắn tối đa
-    maxAngle = Math.PI / 4;  // Góc tối đa (45 độ)
+    @property(cc.Node)
+    nArrow: cc.Node = null;
+
+    maxForce = 1000;
+    maxAngle = Math.PI / 4;
     currentForce = 0;
     currentAngle = 0;
     isCharging = false;
-    chargeRate = 50; // Tốc độ tăng lực
-    angleRate = 0.5; // Tốc độ tăng góc
-    // powerBar = null;
-    trajectoryNode = null;
+    chargeRate = 50;
+    angleRate = 0.5;
+
     onLoad() {
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
         this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
-
     }
-
 
     onTouchStart(event: cc.Touch) {
         this.isCharging = true;
@@ -40,40 +38,37 @@ export default class TiniArcher_GameView extends cc.Component {
         this.pgbPowerBar.progress = 0;
 
         this.schedule(this.increaseForceAndAngle, 0.1);
-        console.log(this.isCharging)
     }
 
     onTouchEnd(event: cc.Touch) {
         this.isCharging = false;
-        //this.shootArrow(this.currentForce, this.currentAngle);
-        console.log(this.isCharging)
+        this.shootArrow(this.currentForce, this.currentAngle);
         this.pgbPowerBar.progress = 0;
         this.unschedule(this.increaseForceAndAngle);
-        this.increaseForceAndAngle();
     }
 
     increaseForceAndAngle() {
         if (this.isCharging) {
-            //Tăng lực và góc
             this.currentForce = Math.min(this.currentForce + this.chargeRate, this.maxForce);
             this.currentAngle = Math.min(this.currentAngle + this.angleRate, this.maxAngle);
-            console.log("Luc ban ", this.currentForce)
-            console.log("Goc ban ", this.currentAngle)
-            // Cập nhật thanh lực dựa trên lực hiện tại
+
             this.pgbPowerBar.progress = this.currentForce / this.maxForce;
 
-            console.log("progress ", this.pgbPowerBar.progress);
-
-            // Cập nhật quỹ đạo
-            //this.updateTrajectory(this.currentForce, this.currentAngle);
+            this.nArrow.angle = +cc.misc.radiansToDegrees(this.currentAngle);
         }
     }
 
-    
-
-    start() {
+    shootArrow(force: number, angle: number) {
+        let rigidBody = this.nArrow.getComponent(cc.RigidBody);
+        if (rigidBody) {
+            const velocity = cc.v2(Math.cos(angle) * force * 10, Math.sin(angle) * force * 10);
+            //console.log("Calculated velocity:", velocity);
+            rigidBody.linearVelocity = velocity;
+            console.log("Arrow velocity after shoot:", rigidBody.linearVelocity);
+        } else {
+            console.error("nArrow does not have a RigidBody component!");
+        }
+        
 
     }
-
-    // update (dt) {}
 }

@@ -35,17 +35,15 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
     function TiniArcher_GameView() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.pgbPowerBar = null;
-        _this.maxForce = 1000; // Lực bắn tối đa
-        _this.maxAngle = Math.PI / 4; // Góc tối đa (45 độ)
+        _this.nArrow = null;
+        _this.maxForce = 1000;
+        _this.maxAngle = Math.PI / 4;
         _this.currentForce = 0;
         _this.currentAngle = 0;
         _this.isCharging = false;
-        _this.chargeRate = 50; // Tốc độ tăng lực
-        _this.angleRate = 0.5; // Tốc độ tăng góc
-        // powerBar = null;
-        _this.trajectoryNode = null;
+        _this.chargeRate = 50;
+        _this.angleRate = 0.5;
         return _this;
-        // update (dt) {}
     }
     TiniArcher_GameView.prototype.onLoad = function () {
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
@@ -57,35 +55,39 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         this.currentAngle = 0;
         this.pgbPowerBar.progress = 0;
         this.schedule(this.increaseForceAndAngle, 0.1);
-        console.log(this.isCharging);
     };
     TiniArcher_GameView.prototype.onTouchEnd = function (event) {
         this.isCharging = false;
-        //this.shootArrow(this.currentForce, this.currentAngle);
-        console.log(this.isCharging);
+        this.shootArrow(this.currentForce, this.currentAngle);
         this.pgbPowerBar.progress = 0;
         this.unschedule(this.increaseForceAndAngle);
-        this.increaseForceAndAngle();
     };
     TiniArcher_GameView.prototype.increaseForceAndAngle = function () {
         if (this.isCharging) {
-            //Tăng lực và góc
             this.currentForce = Math.min(this.currentForce + this.chargeRate, this.maxForce);
             this.currentAngle = Math.min(this.currentAngle + this.angleRate, this.maxAngle);
-            console.log("Luc ban ", this.currentForce);
-            console.log("Goc ban ", this.currentAngle);
-            // Cập nhật thanh lực dựa trên lực hiện tại
             this.pgbPowerBar.progress = this.currentForce / this.maxForce;
-            console.log("progress ", this.pgbPowerBar.progress);
-            // Cập nhật quỹ đạo
-            //this.updateTrajectory(this.currentForce, this.currentAngle);
+            this.nArrow.angle = +cc.misc.radiansToDegrees(this.currentAngle);
         }
     };
-    TiniArcher_GameView.prototype.start = function () {
+    TiniArcher_GameView.prototype.shootArrow = function (force, angle) {
+        var rigidBody = this.nArrow.getComponent(cc.RigidBody);
+        if (rigidBody) {
+            var velocity = cc.v2(Math.cos(angle) * force * 10, Math.sin(angle) * force * 10);
+            //console.log("Calculated velocity:", velocity);
+            rigidBody.linearVelocity = velocity;
+            console.log("Arrow velocity after shoot:", rigidBody.linearVelocity);
+        }
+        else {
+            console.error("nArrow does not have a RigidBody component!");
+        }
     };
     __decorate([
         property(cc.ProgressBar)
     ], TiniArcher_GameView.prototype, "pgbPowerBar", void 0);
+    __decorate([
+        property(cc.Node)
+    ], TiniArcher_GameView.prototype, "nArrow", void 0);
     TiniArcher_GameView = __decorate([
         ccclass
     ], TiniArcher_GameView);

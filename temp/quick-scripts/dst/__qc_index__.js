@@ -11,7 +11,6 @@
                     function __define (exports, require, module) {
                         if (!nodeEnv) {__quick_compile_project__.registerModule(__filename, module);}
 require('./assets/TiniArcher/scripts/TiniArcher.GameManager');
-require('./assets/TiniArcher/scripts/game/TiniArcher.Arrow');
 require('./assets/TiniArcher/scripts/game/TiniArcher.GameView');
 require('./assets/TiniArcher/scripts/game/TiniArcher.Global');
 
