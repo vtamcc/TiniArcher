@@ -1,6 +1,6 @@
 
 (function () {
-var scripts = [{"deps":{"./assets/TiniArcher/scripts/game/TiniArcher.GameView":1,"./assets/TiniArcher/scripts/TiniArcher.GameManager":2,"./assets/TiniArcher/scripts/game/TiniArcher.Global":3},"path":"preview-scripts/__qc_index__.js"},{"deps":{},"path":"preview-scripts/assets/TiniArcher/scripts/game/TiniArcher.GameView.js"},{"deps":{"./game/TiniArcher.GameView":1},"path":"preview-scripts/assets/TiniArcher/scripts/TiniArcher.GameManager.js"},{"deps":{},"path":"preview-scripts/assets/TiniArcher/scripts/game/TiniArcher.Global.js"}];
+var scripts = [{"deps":{"./assets/TiniArcher/scripts/game/TiniArcher.Global":3,"./assets/TiniArcher/scripts/game/TiniArcher.GameView":1,"./assets/TiniArcher/scripts/TiniArcher.GameManager":2,"./assets/TiniArcher/scripts/TiniArcher.ColliderManager":4},"path":"preview-scripts/__qc_index__.js"},{"deps":{},"path":"preview-scripts/assets/TiniArcher/scripts/game/TiniArcher.GameView.js"},{"deps":{"./game/TiniArcher.GameView":1},"path":"preview-scripts/assets/TiniArcher/scripts/TiniArcher.GameManager.js"},{"deps":{},"path":"preview-scripts/assets/TiniArcher/scripts/game/TiniArcher.Global.js"},{"deps":{},"path":"preview-scripts/assets/TiniArcher/scripts/TiniArcher.ColliderManager.js"}];
 var entries = ["preview-scripts/__qc_index__.js"];
 var bundleScript = 'preview-scripts/__qc_bundle__.js';
 

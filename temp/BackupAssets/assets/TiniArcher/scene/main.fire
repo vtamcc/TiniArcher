@@ -772,7 +772,7 @@
     },
     "component": "",
     "_componentId": "1981fS7tJFEaI10LK0UTmnJ",
-    "handler": "",
+    "handler": "clickPlay",
     "customEventData": ""
   },
   {

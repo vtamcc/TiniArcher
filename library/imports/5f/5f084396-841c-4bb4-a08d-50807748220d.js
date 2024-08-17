@@ -36,16 +36,21 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.pgbPowerBar = null;
         _this.nArrow = null;
+        _this.nbullseye = null;
         _this.maxForce = 1000;
         _this.maxAngle = Math.PI / 4;
         _this.currentForce = 0;
         _this.currentAngle = 0;
         _this.isCharging = false;
-        _this.chargeRate = 50;
-        _this.angleRate = 0.5;
+        _this.chargeRate = 100;
+        _this.angleRate = 0.05;
         return _this;
     }
+    TiniArcher_GameView_1 = TiniArcher_GameView;
     TiniArcher_GameView.prototype.onLoad = function () {
+        TiniArcher_GameView_1.instance = this;
+        cc.director.getPhysicsManager().enabled = true;
+        cc.director.getPhysicsManager().debugDrawFlags = cc.PhysicsManager.DrawBits.e_shapeBit;
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
         this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
     };
@@ -59,7 +64,9 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
     TiniArcher_GameView.prototype.onTouchEnd = function (event) {
         this.isCharging = false;
         this.shootArrow(this.currentForce, this.currentAngle);
+        console.log("toc do ban ", this.currentForce);
         this.pgbPowerBar.progress = 0;
+        this.nArrow.angle = 0;
         this.unschedule(this.increaseForceAndAngle);
     };
     TiniArcher_GameView.prototype.increaseForceAndAngle = function () {
@@ -73,22 +80,50 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
     TiniArcher_GameView.prototype.shootArrow = function (force, angle) {
         var rigidBody = this.nArrow.getComponent(cc.RigidBody);
         if (rigidBody) {
-            var velocity = cc.v2(Math.cos(angle) * force * 10, Math.sin(angle) * force * 10);
+            var velocity = cc.v2(Math.cos(angle) * force * 0.8, Math.sin(angle) * force);
             //console.log("Calculated velocity:", velocity);
             rigidBody.linearVelocity = velocity;
+            rigidBody.gravityScale = 0.5;
+            console.log("Calculated velocity:", velocity);
             console.log("Arrow velocity after shoot:", rigidBody.linearVelocity);
         }
         else {
             console.error("nArrow does not have a RigidBody component!");
         }
     };
+    // stopArrow() {
+    //     let arrow = this.nArrow.getComponent(cc.RigidBody)
+    //     arrow.linearVelocity = cc.v2(0,0);
+    //     arrow.gravityScale = 0;
+    //     arrow.angularVelocity = 0;
+    //     this.nArrow.parent = this.nbullseye;
+    //     // this.nArrow.setPosition(this.nbullseye.x + 10, this.nbullseye.y - 100)
+    // }
+    TiniArcher_GameView.prototype.update = function (dt) {
+        var rigidBody = this.nArrow.getComponent(cc.RigidBody);
+        if (rigidBody) {
+            var velocity = rigidBody.linearVelocity;
+            // Kiểm tra nếu mũi tên đang bay
+            if (velocity.mag() > 0) {
+                // Tính toán góc mới của mũi tên dựa trên vận tốc
+                var angle = Math.atan2(velocity.y, velocity.x);
+                // Chuyển góc từ radian sang độ và đặt nó cho mũi tên
+                this.nArrow.angle = cc.misc.radiansToDegrees(angle);
+            }
+        }
+    };
+    var TiniArcher_GameView_1;
+    TiniArcher_GameView.instance = null;
     __decorate([
         property(cc.ProgressBar)
     ], TiniArcher_GameView.prototype, "pgbPowerBar", void 0);
     __decorate([
         property(cc.Node)
     ], TiniArcher_GameView.prototype, "nArrow", void 0);
-    TiniArcher_GameView = __decorate([
+    __decorate([
+        property(cc.Node)
+    ], TiniArcher_GameView.prototype, "nbullseye", void 0);
+    TiniArcher_GameView = TiniArcher_GameView_1 = __decorate([
         ccclass
     ], TiniArcher_GameView);
     return TiniArcher_GameView;

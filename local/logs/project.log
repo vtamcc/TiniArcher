@@ -1,76 +1,142 @@
-2024-08-16T08:14:00.590Z - success: protocol editor-framework registered
-2024-08-16T08:14:00.592Z - success: protocol app registered
-2024-08-16T08:14:00.593Z - success: protocol theme registered
-2024-08-16T08:14:00.593Z - success: protocol packages registered
-2024-08-16T08:14:00.621Z - normal: Load ~/.CocosCreator/settings.json
-2024-08-16T08:14:00.648Z - success: protocol uuid registerred
-2024-08-16T08:14:00.648Z - success: protocol db registerred
-2024-08-16T08:14:00.648Z - success: protocol thumbnail registerred
-2024-08-16T08:14:00.736Z - normal: Initializing Asset Database
-2024-08-16T08:14:00.740Z - normal: checking language setting...
-2024-08-16T08:14:00.740Z - normal: Language: en
-2024-08-16T08:14:00.742Z - success: protocol unpack registerred
-2024-08-16T08:14:00.743Z - success: protocol disable-commonjs registerred
-2024-08-16T08:14:03.811Z - normal: connected!
-2024-08-16T08:14:04.614Z - normal: Check project /Users/mac/Documents/WORK/MINIGAME/TiniArcher
-2024-08-16T08:14:04.622Z - normal: Initializing project /Users/mac/Documents/WORK/MINIGAME/TiniArcher
-2024-08-16T08:14:04.848Z - success: adapters loaded
-2024-08-16T08:14:04.853Z - success: asset-db-debugger loaded
-2024-08-16T08:14:04.927Z - success: fb-audience-network loaded
-2024-08-16T08:14:04.974Z - success: fb-live-stream loaded
-2024-08-16T08:14:04.977Z - success: google-play-instant loaded
-2024-08-16T08:14:04.978Z - success: jsb-adapter loaded
-2024-08-16T08:14:05.002Z - success: package-manager loaded
-2024-08-16T08:14:05.003Z - success: runtime-adapters loaded
-2024-08-16T08:14:05.005Z - success: runtime-dev-tools loaded
-2024-08-16T08:14:05.008Z - success: ui-kit-preview-extra loaded
-2024-08-16T08:14:05.010Z - success: ui-kit-preview loaded
-2024-08-16T08:14:05.760Z - success: alipay-minigame loaded
-2024-08-16T08:14:05.778Z - success: assets loaded
-2024-08-16T08:14:05.781Z - success: baidugame-opendata loaded
-2024-08-16T08:14:05.783Z - success: baidugame loaded
-2024-08-16T08:14:05.786Z - success: builder loaded
-2024-08-16T08:14:05.789Z - success: bytedance-opendata loaded
-2024-08-16T08:14:05.791Z - success: bytedance loaded
-2024-08-16T08:14:05.795Z - success: channel-upload-tools loaded
-2024-08-16T08:14:05.931Z - success: cloud-function loaded
-2024-08-16T08:14:06.129Z - success: cocos-services loaded
-2024-08-16T08:14:06.136Z - success: console loaded
-2024-08-16T08:14:06.139Z - success: curve-editor loaded
-2024-08-16T08:14:06.147Z - success: fb-instant-games loaded
-2024-08-16T08:14:06.150Z - success: game-window loaded
-2024-08-16T08:14:06.151Z - success: google-instant-games loaded
-2024-08-16T08:14:06.155Z - success: hierarchy loaded
-2024-08-16T08:14:06.158Z - success: huawei-agc loaded
-2024-08-16T08:14:06.161Z - success: huawei-runtime loaded
-2024-08-16T08:14:06.164Z - success: inspector loaded
-2024-08-16T08:14:06.186Z - success: cpk-publish loaded
-2024-08-16T08:14:06.188Z - success: keystore loaded
-2024-08-16T08:14:06.205Z - success: link-sure-runtime loaded
-2024-08-16T08:14:06.225Z - success: node-library loaded
-2024-08-16T08:14:06.226Z - success: open-recent-items loaded
-2024-08-16T08:14:06.229Z - success: oppo-runtime loaded
-2024-08-16T08:14:06.231Z - success: package-asset loaded
-2024-08-16T08:14:06.232Z - success: preferences loaded
-2024-08-16T08:14:06.236Z - success: project-importer loaded
-2024-08-16T08:14:06.238Z - success: project-settings loaded
-2024-08-16T08:14:06.252Z - success: qtt-runtime loaded
-2024-08-16T08:14:06.256Z - success: scene loaded
-2024-08-16T08:14:06.257Z - success: simulator-debugger loaded
-2024-08-16T08:14:06.258Z - success: sprite-editor loaded
-2024-08-16T08:14:06.320Z - success: store loaded
-2024-08-16T08:14:06.322Z - success: taobao-creativeapp loaded
-2024-08-16T08:14:06.325Z - success: timeline loaded
-2024-08-16T08:14:06.331Z - success: vivo-runtime loaded
-2024-08-16T08:14:06.334Z - success: wechatgame-opendata loaded
-2024-08-16T08:14:06.337Z - success: wechatgame loaded
-2024-08-16T08:14:06.343Z - success: xiaomi-runtime loaded
-2024-08-16T08:14:06.398Z - success: im-plugin loaded
-2024-08-16T08:14:06.399Z - success: preview server running at http://localhost:7456
-2024-08-16T08:14:07.946Z - info: Cocos Service load base data!
-2024-08-16T08:14:08.465Z - normal: Initializing Cocos2d
-2024-08-16T08:14:08.732Z - normal: Initializing engine extends
-2024-08-16T08:14:09.564Z - normal: Loading packages
-2024-08-16T08:14:09.568Z - normal: Watching packages
-2024-08-16T08:14:09.806Z - normal: Run Application
-2024-08-16T08:14:15.332Z - success: cloud-function unloaded
+2024-08-17T01:49:22.640Z - success: protocol editor-framework registered
+2024-08-17T01:49:22.642Z - success: protocol app registered
+2024-08-17T01:49:22.642Z - success: protocol theme registered
+2024-08-17T01:49:22.642Z - success: protocol packages registered
+2024-08-17T01:49:22.663Z - normal: Load ~/.CocosCreator/settings.json
+2024-08-17T01:49:22.686Z - success: protocol uuid registerred
+2024-08-17T01:49:22.686Z - success: protocol db registerred
+2024-08-17T01:49:22.686Z - success: protocol thumbnail registerred
+2024-08-17T01:49:22.761Z - normal: Initializing Asset Database
+2024-08-17T01:49:22.763Z - normal: checking language setting...
+2024-08-17T01:49:22.763Z - normal: Language: en
+2024-08-17T01:49:22.766Z - success: protocol unpack registerred
+2024-08-17T01:49:22.766Z - success: protocol disable-commonjs registerred
+2024-08-17T01:49:25.327Z - normal: connected!
+2024-08-17T01:49:25.546Z - normal: Check project /Users/mac/Documents/WORK/MINIGAME/TiniArcher
+2024-08-17T01:49:25.552Z - normal: Initializing project /Users/mac/Documents/WORK/MINIGAME/TiniArcher
+2024-08-17T01:49:25.755Z - success: adapters loaded
+2024-08-17T01:49:25.759Z - success: asset-db-debugger loaded
+2024-08-17T01:49:25.819Z - success: fb-audience-network loaded
+2024-08-17T01:49:25.859Z - success: fb-live-stream loaded
+2024-08-17T01:49:25.862Z - success: google-play-instant loaded
+2024-08-17T01:49:25.862Z - success: jsb-adapter loaded
+2024-08-17T01:49:25.883Z - success: package-manager loaded
+2024-08-17T01:49:25.884Z - success: runtime-adapters loaded
+2024-08-17T01:49:25.885Z - success: runtime-dev-tools loaded
+2024-08-17T01:49:25.887Z - success: ui-kit-preview-extra loaded
+2024-08-17T01:49:25.889Z - success: ui-kit-preview loaded
+2024-08-17T01:49:26.594Z - success: alipay-minigame loaded
+2024-08-17T01:49:26.610Z - success: assets loaded
+2024-08-17T01:49:26.613Z - success: baidugame-opendata loaded
+2024-08-17T01:49:26.615Z - success: baidugame loaded
+2024-08-17T01:49:26.618Z - success: builder loaded
+2024-08-17T01:49:26.623Z - success: bytedance-opendata loaded
+2024-08-17T01:49:26.626Z - success: bytedance loaded
+2024-08-17T01:49:26.630Z - success: channel-upload-tools loaded
+2024-08-17T01:49:26.765Z - success: cloud-function loaded
+2024-08-17T01:49:26.966Z - success: cocos-services loaded
+2024-08-17T01:49:26.973Z - success: console loaded
+2024-08-17T01:49:26.975Z - success: curve-editor loaded
+2024-08-17T01:49:26.982Z - success: fb-instant-games loaded
+2024-08-17T01:49:26.985Z - success: game-window loaded
+2024-08-17T01:49:26.986Z - success: google-instant-games loaded
+2024-08-17T01:49:26.990Z - success: hierarchy loaded
+2024-08-17T01:49:26.992Z - success: huawei-agc loaded
+2024-08-17T01:49:26.995Z - success: huawei-runtime loaded
+2024-08-17T01:49:26.998Z - success: inspector loaded
+2024-08-17T01:49:27.016Z - success: cpk-publish loaded
+2024-08-17T01:49:27.018Z - success: keystore loaded
+2024-08-17T01:49:27.035Z - success: link-sure-runtime loaded
+2024-08-17T01:49:27.053Z - success: node-library loaded
+2024-08-17T01:49:27.055Z - success: open-recent-items loaded
+2024-08-17T01:49:27.058Z - success: oppo-runtime loaded
+2024-08-17T01:49:27.059Z - success: package-asset loaded
+2024-08-17T01:49:27.060Z - success: preferences loaded
+2024-08-17T01:49:27.063Z - success: project-importer loaded
+2024-08-17T01:49:27.066Z - success: project-settings loaded
+2024-08-17T01:49:27.078Z - success: qtt-runtime loaded
+2024-08-17T01:49:27.081Z - success: scene loaded
+2024-08-17T01:49:27.082Z - success: simulator-debugger loaded
+2024-08-17T01:49:27.082Z - success: sprite-editor loaded
+2024-08-17T01:49:27.141Z - success: store loaded
+2024-08-17T01:49:27.143Z - success: taobao-creativeapp loaded
+2024-08-17T01:49:27.146Z - success: timeline loaded
+2024-08-17T01:49:27.152Z - success: vivo-runtime loaded
+2024-08-17T01:49:27.154Z - success: wechatgame-opendata loaded
+2024-08-17T01:49:27.157Z - success: wechatgame loaded
+2024-08-17T01:49:27.163Z - success: xiaomi-runtime loaded
+2024-08-17T01:49:27.216Z - success: im-plugin loaded
+2024-08-17T01:49:27.217Z - success: preview server running at http://localhost:7456
+2024-08-17T01:49:28.626Z - info: Cocos Service load base data!
+2024-08-17T01:49:29.227Z - normal: Initializing Cocos2d
+2024-08-17T01:49:29.459Z - normal: Initializing engine extends
+2024-08-17T01:49:30.164Z - normal: Loading packages
+2024-08-17T01:49:30.167Z - normal: Watching packages
+2024-08-17T01:49:30.398Z - normal: Run Application
+2024-08-17T01:49:35.586Z - success: cloud-function unloaded
+2024-08-17T07:54:35.615Z - error: Error: Parsing file /Users/mac/Documents/WORK/MINIGAME/TiniArcher/temp/quick-scripts/src/assets/TiniArcher/scripts/game/TiniArcher.GameView.js: Unexpected token (108:8)
+    at Deps.parseDeps (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/module-deps/index.js:481:28)
+    at getDeps (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/module-deps/index.js:414:40)
+    at /Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/module-deps/index.js:398:32
+    at ConcatStream.<anonymous> (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/concat-stream/index.js:36:43)
+    at ConcatStream.emit (events.js:327:22)
+    at ConcatStream.emit (domain.js:483:12)
+    at finishMaybe (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/concat-stream/node_modules/readable-stream/lib/_stream_writable.js:475:14)
+    at endWritable (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/concat-stream/node_modules/readable-stream/lib/_stream_writable.js:485:3)
+    at ConcatStream.end (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/concat-stream/node_modules/readable-stream/lib/_stream_writable.js:455:41)
+    at DestroyableTransform.onend (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/readable-stream/lib/_stream_readable.js:577:10)
+    at m._parseEntry (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor/share/quick-compile/index.ccc:1:6393)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at async Promise.all (index 0)
+    at async m._compileScripts (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor/share/quick-compile/index.ccc:1:3491)
+2024-08-17T07:54:35.987Z - failed: load script [./game/TiniArcher.GameView] failed : /Users/mac/Documents/WORK/MINIGAME/TiniArcher/temp/quick-scripts/dst/assets/TiniArcher/scripts/game/TiniArcher.GameView.js:108
+        ;
+        ^
+
+SyntaxError: Unexpected token ';'
+    at new Script (vm.js:88:7)
+    at createScript (vm.js:261:10)
+    at Object.runInThisContext (vm.js:309:10)
+    at wrapSafe (internal/modules/cjs/loader.js:1047:15)
+    at Module._compile (internal/modules/cjs/loader.js:1108:27)
+    at Object.f (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/share/require.js:1:1993)
+    at Module.load (internal/modules/cjs/loader.js:992:32)
+    at Module._load (internal/modules/cjs/loader.js:885:14)
+    at Function.f._load (electron/js2c/asar_bundle.js:5:12734)
+    at Module.require [as __require] (internal/modules/cjs/loader.js:1032:19)
+2024-08-17T07:54:35.989Z - failed: load script [./game/TiniArcher.GameView] failed : /Users/mac/Documents/WORK/MINIGAME/TiniArcher/temp/quick-scripts/dst/assets/TiniArcher/scripts/game/TiniArcher.GameView.js:108
+        ;
+        ^
+
+SyntaxError: Unexpected token ';'
+    at new Script (vm.js:88:7)
+    at createScript (vm.js:261:10)
+    at Object.runInThisContext (vm.js:309:10)
+    at wrapSafe (internal/modules/cjs/loader.js:1047:15)
+    at Module._compile (internal/modules/cjs/loader.js:1108:27)
+    at Object.f (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/share/require.js:1:1993)
+    at Module.load (internal/modules/cjs/loader.js:992:32)
+    at Module._load (internal/modules/cjs/loader.js:885:14)
+    at Function.f._load (electron/js2c/asar_bundle.js:5:12734)
+    at Module.require [as __require] (internal/modules/cjs/loader.js:1032:19)
+2024-08-17T07:54:35.990Z - failed: load script [./assets/TiniArcher/scripts/game/TiniArcher.GameView] failed : /Users/mac/Documents/WORK/MINIGAME/TiniArcher/temp/quick-scripts/dst/assets/TiniArcher/scripts/game/TiniArcher.GameView.js:108
+        ;
+        ^
+
+SyntaxError: Unexpected token ';'
+    at new Script (vm.js:88:7)
+    at createScript (vm.js:261:10)
+    at Object.runInThisContext (vm.js:309:10)
+    at wrapSafe (internal/modules/cjs/loader.js:1047:15)
+    at Module._compile (internal/modules/cjs/loader.js:1108:27)
+    at Object.f (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/share/require.js:1:1993)
+    at Module.load (internal/modules/cjs/loader.js:992:32)
+    at Module._load (internal/modules/cjs/loader.js:885:14)
+    at Function.f._load (electron/js2c/asar_bundle.js:5:12734)
+    at Module.require [as __require] (internal/modules/cjs/loader.js:1032:19)
+2024-08-17T07:54:36.112Z - warn: Script attached to "GameView" is missing or invalid. Detailed information:
+Node path: "GameView"
+Script UUID: "5f084396-841c-4bb4-a08d-50807748220d"
+Class ID: "5f084OWhBxLtKCNUIB3SCIN"
+
