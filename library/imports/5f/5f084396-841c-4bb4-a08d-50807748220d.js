@@ -37,13 +37,14 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         _this.pgbPowerBar = null;
         _this.nArrow = null;
         _this.nbullseye = null;
+        _this.nTrajectoryNode = null;
         _this.maxForce = 1000;
         _this.maxAngle = Math.PI / 4;
         _this.currentForce = 0;
         _this.currentAngle = 0;
         _this.isCharging = false;
-        _this.chargeRate = 100;
-        _this.angleRate = 0.05;
+        _this.chargeRate = 200;
+        _this.angleRate = 0.2;
         return _this;
     }
     TiniArcher_GameView_1 = TiniArcher_GameView;
@@ -75,12 +76,13 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
             this.currentAngle = Math.min(this.currentAngle + this.angleRate, this.maxAngle);
             this.pgbPowerBar.progress = this.currentForce / this.maxForce;
             this.nArrow.angle = +cc.misc.radiansToDegrees(this.currentAngle);
+            this.updateTrajectory(this.currentForce, this.currentAngle);
         }
     };
     TiniArcher_GameView.prototype.shootArrow = function (force, angle) {
         var rigidBody = this.nArrow.getComponent(cc.RigidBody);
         if (rigidBody) {
-            var velocity = cc.v2(Math.cos(angle) * force * 0.8, Math.sin(angle) * force);
+            var velocity = cc.v2(Math.cos(angle) * force, Math.sin(angle) * force);
             //console.log("Calculated velocity:", velocity);
             rigidBody.linearVelocity = velocity;
             rigidBody.gravityScale = 0.5;
@@ -90,6 +92,23 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         else {
             console.error("nArrow does not have a RigidBody component!");
         }
+    };
+    TiniArcher_GameView.prototype.updateTrajectory = function (force, angle) {
+        var graphics = this.nTrajectoryNode.getComponent(cc.Graphics);
+        graphics.clear();
+        var points = [];
+        var initialPosition = this.node.position;
+        for (var i = 0; i < 50; i++) {
+            var t = i / 10; // Thời gian tỉ lệ
+            var x = initialPosition.x + Math.cos(angle) * force * t;
+            var y = initialPosition.y + Math.sin(angle) * force * t - (0.5 * 9.8 * t * t);
+            points.push(cc.v2(x, y));
+        }
+        graphics.moveTo(points[0].x, points[0].y);
+        for (var i = 1; i < points.length; i++) {
+            graphics.lineTo(points[i].x, points[i].y);
+        }
+        graphics.stroke();
     };
     // stopArrow() {
     //     let arrow = this.nArrow.getComponent(cc.RigidBody)
@@ -123,6 +142,9 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
     __decorate([
         property(cc.Node)
     ], TiniArcher_GameView.prototype, "nbullseye", void 0);
+    __decorate([
+        property(cc.Node)
+    ], TiniArcher_GameView.prototype, "nTrajectoryNode", void 0);
     TiniArcher_GameView = TiniArcher_GameView_1 = __decorate([
         ccclass
     ], TiniArcher_GameView);

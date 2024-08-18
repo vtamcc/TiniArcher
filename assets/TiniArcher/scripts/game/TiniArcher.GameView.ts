@@ -20,13 +20,16 @@ export default class TiniArcher_GameView extends cc.Component {
 
     @property(cc.Node)
     nbullseye: cc.Node = null;
+
+    @property(cc.Node)
+    nTrajectoryNode: cc.Node = null;  
     maxForce = 1000;
     maxAngle = Math.PI / 4;
     currentForce = 0;
     currentAngle = 0;
     isCharging = false;
-    chargeRate = 100;
-    angleRate = 0.05;
+    chargeRate = 200;
+    angleRate = 0.2;
 
     onLoad() {
         TiniArcher_GameView.instance = this;
@@ -59,13 +62,14 @@ export default class TiniArcher_GameView extends cc.Component {
             this.currentAngle = Math.min(this.currentAngle + this.angleRate, this.maxAngle);
             this.pgbPowerBar.progress = this.currentForce / this.maxForce;
             this.nArrow.angle = +cc.misc.radiansToDegrees(this.currentAngle);
+            this.updateTrajectory(this.currentForce, this.currentAngle);
         }
     }
 
     shootArrow(force: number, angle: number) {
         let rigidBody = this.nArrow.getComponent(cc.RigidBody);
         if (rigidBody) {
-            let velocity = cc.v2(Math.cos(angle) * force * 0.8, Math.sin(angle) * force);
+            let velocity = cc.v2(Math.cos(angle) * force, Math.sin(angle) * force);
             //console.log("Calculated velocity:", velocity);
             rigidBody.linearVelocity = velocity;
             rigidBody.gravityScale = 0.5;
@@ -78,6 +82,27 @@ export default class TiniArcher_GameView extends cc.Component {
 
     }
 
+    updateTrajectory(force, angle) {
+        const graphics = this.nTrajectoryNode.getComponent(cc.Graphics);
+        graphics.clear();
+    
+        const points = [];
+        const initialPosition = this.node.position;
+    
+        for (let i = 0; i < 50; i++) {
+            const t = i / 10; // Thời gian tỉ lệ
+            const x = initialPosition.x + Math.cos(angle) * force * t;
+            const y = initialPosition.y + Math.sin(angle) * force * t - (0.5 * 9.8 * t * t);
+    
+            points.push(cc.v2(x, y));
+        }
+        graphics.moveTo(points[0].x, points[0].y);
+        for (let i = 1; i < points.length; i++) {
+            graphics.lineTo(points[i].x, points[i].y);
+        }
+    
+        graphics.stroke();
+    }
     // stopArrow() {
     //     let arrow = this.nArrow.getComponent(cc.RigidBody)
     //     arrow.linearVelocity = cc.v2(0,0);
