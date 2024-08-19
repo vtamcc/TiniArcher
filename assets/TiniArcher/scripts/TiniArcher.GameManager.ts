@@ -6,7 +6,7 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
 import TiniArcher_GameView from "./game/TiniArcher.GameView";
-import { Global } from "./game/TiniArcher.Global";
+
 
 const {ccclass, property} = cc._decorator;
 

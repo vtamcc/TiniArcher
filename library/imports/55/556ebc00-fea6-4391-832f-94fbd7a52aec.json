@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "cricle_2",
+    "texture": "68cfb3eb-139f-4443-879d-fa98adc8cd1a",
+    "atlas": "",
+    "rect": [
+      0,
+      1,
+      15,
+      15
+    ],
+    "offset": [
+      -0.5,
+      0
+    ],
+    "originalSize": [
+      16,
+      17
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
