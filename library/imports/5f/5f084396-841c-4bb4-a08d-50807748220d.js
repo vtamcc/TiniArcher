@@ -46,6 +46,9 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         _this.currentForce = 0;
         _this.currentAngle = 0;
         _this.isCharging = false;
+        _this.trajectoryPoints = []; // Lưu các điểm quỹ đạo
+        _this.isArrowFlying = false; // Đánh dấu khi mũi tên đang bay
+        _this.trajectoryIndex = 0; // Chỉ số hiện tại trong quỹ đạo
         return _this;
     }
     TiniArcher_GameView_1 = TiniArcher_GameView;
@@ -62,7 +65,15 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
     TiniArcher_GameView.prototype.onTouchEnd = function (event) {
         this.isCharging = false;
         this.nTrajectoryNode.removeAllChildren();
+        this.trajectoryCircle(this.updateTrajectory(this.currentForce, this.currentAngle));
         this.updatePowerBar();
+        this.trajectoryPoints = this.updateTrajectory(this.currentForce, this.currentAngle);
+        this.shootArrow();
+        //this.shootArrow(this.currentForce,this.currentAngle);
+    };
+    TiniArcher_GameView.prototype.shootArrow = function () {
+        this.isArrowFlying = true;
+        this.trajectoryIndex = 0;
     };
     TiniArcher_GameView.prototype.trajectoryCircle = function (points) {
         var _this = this;
@@ -76,7 +87,7 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
     TiniArcher_GameView.prototype.updateTrajectory = function (force, angle) {
         var points = [];
         var startPosition = this.nArrow.position;
-        for (var i = 0; i < 30; i++) {
+        for (var i = 0; i < 20; i++) {
             var t = i * 0.03;
             var x = startPosition.x + force * Math.cos(angle * Math.PI / 180) * t;
             var y = startPosition.y + force * Math.sin(angle * Math.PI / 180) * t - 0.5 * 980 * t * t;
@@ -102,15 +113,39 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         if (this.isCharging) {
             this.currentForce = Math.min(this.currentForce + 1000 * dt, this.maxForce);
             this.currentAngle = Math.min(this.currentAngle + 45 * dt, this.maxAngle);
+            console.log("Goc ban ", this.currentAngle);
             this.trajectoryCircle(this.updateTrajectory(this.currentForce, this.currentAngle));
             this.updateAngleArrow(this.currentAngle);
             this.updateArrowPos();
+        }
+        else if (this.isArrowFlying) {
+            if (this.trajectoryIndex < this.trajectoryPoints.length - 1) {
+                var currentPoint = this.trajectoryPoints[this.trajectoryIndex];
+                var nextPoint = this.trajectoryPoints[this.trajectoryIndex + 1];
+                this.nArrow.setPosition(nextPoint);
+                var direction = nextPoint.sub(currentPoint);
+                var angle = Math.atan2(direction.y, direction.x) * 180 / Math.PI;
+                this.nArrow.angle = angle;
+                this.trajectoryIndex++;
+            }
+            else {
+                var rigidBody = this.nArrow.getComponent(cc.RigidBody);
+                rigidBody.type = cc.RigidBodyType.Dynamic;
+                //this.isArrowFlying = false;
+            }
+        }
+        else if (this.nArrow.getComponent(cc.RigidBody).type === cc.RigidBodyType.Dynamic) {
+            // Cập nhật góc mũi tên dựa trên hướng của vận tốc
+            var velocity = this.nArrow.getComponent(cc.RigidBody).linearVelocity;
+            if (velocity.mag() > 0) {
+                var angle = Math.atan2(velocity.y, velocity.x) * 180 / Math.PI;
+                this.nArrow.angle = angle;
+            }
         }
         else {
             this.currentForce = Math.max(this.currentForce - 1000 * dt, this.startForce);
             this.currentAngle = Math.max(this.currentAngle - 45 * dt, this.startAngle);
             this.updateAngleArrow(this.currentAngle);
-            this.resetArrowPosition();
         }
         this.updatePowerBar();
     };

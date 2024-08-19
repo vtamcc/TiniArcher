@@ -2159,9 +2159,9 @@
       "__id__": 56
     },
     "_enabled": true,
-    "_type": 2,
+    "_type": 0,
     "_allowSleep": false,
-    "_gravityScale": 0,
+    "_gravityScale": 0.5,
     "_linearDamping": 0,
     "_angularDamping": 0,
     "_linearVelocity": {
