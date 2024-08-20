@@ -24,35 +24,19 @@ export default class TiniArcher_Collider extends cc.Component {
 
     onCollisionEnter(other, self) {
         if (other.tag == 1) {
-            let arrowRigidBody = self.node.getComponent(cc.RigidBody);
-            arrowRigidBody.gravityScale = 0;
-            arrowRigidBody.linearVelocity = cc.v2(0, 0);
-            arrowRigidBody.angularVelocity = 0;
+            TiniArcher_GameView.instance.isArrowFlying = false;
+            TiniArcher_GameView.instance.nTrajectoryNode.removeAllChildren();
             self.node.parent = other.node;
-            // Lấy vị trí va chạm chính xác
+            TiniArcher_GameView.instance.resetBg();
+            console.log('va cham');
             let collisionPoint = self.world.aabb.center;
-    
+            TiniArcher_GameView.instance.shakeTarget(TiniArcher_GameView.instance.nStick)
             // Chuyển đổi tọa độ va chạm từ không gian thế giới sang không gian của bia
             let localPoint = other.node.convertToNodeSpaceAR(collisionPoint);
             self.node.setPosition(localPoint.x, localPoint.y);
-           
             console.log("old ",localPoint)
             // Giữ nguyên góc của mũi tên
-            self.node.angle;
-    
-            // Gắn mũi tên vào bia
-          
-            // Gắn mũi tên vào bia
-           
-        
-    
-            // Gắn mũi tên vào bia để nó không rơi ra
-           
-    
-         
-        
-
-    
+            self.node.angle
            
 
         }

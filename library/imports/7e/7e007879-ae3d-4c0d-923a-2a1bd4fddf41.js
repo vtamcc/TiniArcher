@@ -69,7 +69,6 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         this.pgbPowerBar.progress = 0;
         this.nArrow.angle = 0;
         this.unschedule(this.increaseForceAndAngle);
-        this.nTrajectoryNode.removeAllChildren();
     };
     TiniArcher_GameView.prototype.increaseForceAndAngle = function () {
         if (this.isCharging) {

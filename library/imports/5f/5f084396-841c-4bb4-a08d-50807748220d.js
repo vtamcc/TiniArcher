@@ -36,9 +36,10 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.pgbPowerBar = null;
         _this.nArrow = null;
-        _this.nbullseye = null;
+        _this.nStick = null;
         _this.nTrajectoryNode = null;
         _this.pfCircle = null;
+        _this.pfArrow = null;
         _this.maxForce = 1000;
         _this.maxAngle = 45;
         _this.startForce = 0;
@@ -46,9 +47,11 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         _this.currentForce = 0;
         _this.currentAngle = 0;
         _this.isCharging = false;
+        _this.isBgMove = false;
         _this.trajectoryPoints = []; // Lưu các điểm quỹ đạo
         _this.isArrowFlying = false; // Đánh dấu khi mũi tên đang bay
         _this.trajectoryIndex = 0; // Chỉ số hiện tại trong quỹ đạo
+        _this.indexBg = 0;
         return _this;
     }
     TiniArcher_GameView_1 = TiniArcher_GameView;
@@ -69,6 +72,7 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         this.updatePowerBar();
         this.trajectoryPoints = this.updateTrajectory(this.currentForce, this.currentAngle);
         this.shootArrow();
+        this.nTrajectoryNode.removeAllChildren();
         //this.shootArrow(this.currentForce,this.currentAngle);
     };
     TiniArcher_GameView.prototype.shootArrow = function () {
@@ -76,18 +80,25 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         this.trajectoryIndex = 0;
     };
     TiniArcher_GameView.prototype.trajectoryCircle = function (points) {
-        var _this = this;
         this.nTrajectoryNode.removeAllChildren();
-        points.forEach(function (e) {
-            var cricle = cc.instantiate(_this.pfCircle);
-            cricle.setPosition(e);
-            _this.nTrajectoryNode.addChild(cricle);
-        });
+        // points.forEach(e => {
+        //     let cricle = cc.instantiate(this.pfCircle)
+        //     cricle.setPosition(e);
+        //     this.nTrajectoryNode.addChild(cricle);
+        // })
+        for (var i = 0; i < points.length; i++) {
+            var cricle = cc.instantiate(this.pfCircle);
+            cricle.setPosition(points[i]);
+            if (i > 20) {
+                cricle.opacity = 0;
+            }
+            this.nTrajectoryNode.addChild(cricle);
+        }
     };
     TiniArcher_GameView.prototype.updateTrajectory = function (force, angle) {
         var points = [];
         var startPosition = this.nArrow.position;
-        for (var i = 0; i < 20; i++) {
+        for (var i = 0; i < 50; i++) {
             var t = i * 0.03;
             var x = startPosition.x + force * Math.cos(angle * Math.PI / 180) * t;
             var y = startPosition.y + force * Math.sin(angle * Math.PI / 180) * t - 0.5 * 980 * t * t;
@@ -109,6 +120,26 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
     TiniArcher_GameView.prototype.resetArrowPosition = function () {
         this.nArrow.setPosition(this.nArrow.x, this.currentAngle);
     };
+    TiniArcher_GameView.prototype.resetBg = function () {
+        this.isBgMove = true;
+        this.indexBg++;
+        this.nArrow.setPosition(66, 0);
+        if (this.indexBg > 2) {
+            this.indexBg = 0;
+        }
+    };
+    TiniArcher_GameView.prototype.shakeTarget = function (target) {
+        var shakeDuration = 0.25; // Thời gian của mỗi bước rung
+        var angles = [-2, 2, -1.5, 1.5, -1, 1]; // Các giá trị góc rung giảm dần
+        var tween = cc.tween(target);
+        for (var i = 0; i < angles.length; i++) {
+            tween = tween.to(shakeDuration, { angle: angles[i] });
+        }
+        // Quay trở lại góc 0
+        tween.to(shakeDuration, { angle: 0 });
+        // Chạy hiệu ứng
+        tween.start();
+    };
     TiniArcher_GameView.prototype.update = function (dt) {
         if (this.isCharging) {
             this.currentForce = Math.min(this.currentForce + 1000 * dt, this.maxForce);
@@ -122,6 +153,7 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
             if (this.trajectoryIndex < this.trajectoryPoints.length - 1) {
                 var currentPoint = this.trajectoryPoints[this.trajectoryIndex];
                 var nextPoint = this.trajectoryPoints[this.trajectoryIndex + 1];
+                //this.isCharging = false;
                 this.nArrow.setPosition(nextPoint);
                 var direction = nextPoint.sub(currentPoint);
                 var angle = Math.atan2(direction.y, direction.x) * 180 / Math.PI;
@@ -129,23 +161,13 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
                 this.trajectoryIndex++;
             }
             else {
-                var rigidBody = this.nArrow.getComponent(cc.RigidBody);
-                rigidBody.type = cc.RigidBodyType.Dynamic;
-                //this.isArrowFlying = false;
-            }
-        }
-        else if (this.nArrow.getComponent(cc.RigidBody).type === cc.RigidBodyType.Dynamic) {
-            // Cập nhật góc mũi tên dựa trên hướng của vận tốc
-            var velocity = this.nArrow.getComponent(cc.RigidBody).linearVelocity;
-            if (velocity.mag() > 0) {
-                var angle = Math.atan2(velocity.y, velocity.x) * 180 / Math.PI;
-                this.nArrow.angle = angle;
+                this.isArrowFlying = false;
+                this.resetBg();
             }
         }
         else {
             this.currentForce = Math.max(this.currentForce - 1000 * dt, this.startForce);
             this.currentAngle = Math.max(this.currentAngle - 45 * dt, this.startAngle);
-            this.updateAngleArrow(this.currentAngle);
         }
         this.updatePowerBar();
     };
@@ -159,13 +181,16 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
     ], TiniArcher_GameView.prototype, "nArrow", void 0);
     __decorate([
         property(cc.Node)
-    ], TiniArcher_GameView.prototype, "nbullseye", void 0);
+    ], TiniArcher_GameView.prototype, "nStick", void 0);
     __decorate([
         property(cc.Node)
     ], TiniArcher_GameView.prototype, "nTrajectoryNode", void 0);
     __decorate([
         property(cc.Prefab)
     ], TiniArcher_GameView.prototype, "pfCircle", void 0);
+    __decorate([
+        property(cc.Prefab)
+    ], TiniArcher_GameView.prototype, "pfArrow", void 0);
     TiniArcher_GameView = TiniArcher_GameView_1 = __decorate([
         ccclass
     ], TiniArcher_GameView);

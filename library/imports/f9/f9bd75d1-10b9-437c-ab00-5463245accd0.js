@@ -29,6 +29,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var TiniArcher_GameView_1 = require("./game/TiniArcher.GameView");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var TiniArcher_Collider = /** @class */ (function (_super) {
     __extends(TiniArcher_Collider, _super);
@@ -42,22 +43,19 @@ var TiniArcher_Collider = /** @class */ (function (_super) {
     };
     TiniArcher_Collider.prototype.onCollisionEnter = function (other, self) {
         if (other.tag == 1) {
-            var arrowRigidBody = self.node.getComponent(cc.RigidBody);
-            arrowRigidBody.gravityScale = 0;
-            arrowRigidBody.linearVelocity = cc.v2(0, 0);
-            arrowRigidBody.angularVelocity = 0;
+            TiniArcher_GameView_1.default.instance.isArrowFlying = false;
+            TiniArcher_GameView_1.default.instance.nTrajectoryNode.removeAllChildren();
             self.node.parent = other.node;
-            // Lấy vị trí va chạm chính xác
+            TiniArcher_GameView_1.default.instance.resetBg();
+            console.log('va cham');
             var collisionPoint = self.world.aabb.center;
+            TiniArcher_GameView_1.default.instance.shakeTarget(TiniArcher_GameView_1.default.instance.nStick);
             // Chuyển đổi tọa độ va chạm từ không gian thế giới sang không gian của bia
             var localPoint = other.node.convertToNodeSpaceAR(collisionPoint);
             self.node.setPosition(localPoint.x, localPoint.y);
             console.log("old ", localPoint);
             // Giữ nguyên góc của mũi tên
             self.node.angle;
-            // Gắn mũi tên vào bia
-            // Gắn mũi tên vào bia
-            // Gắn mũi tên vào bia để nó không rơi ra
         }
     };
     TiniArcher_Collider = __decorate([

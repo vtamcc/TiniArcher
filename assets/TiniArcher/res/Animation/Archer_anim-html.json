@@ -1,0 +1,1671 @@
+{
+    "skeleton": {
+        "width": 182.81,
+        "height": 183.44,
+        "fps": 24,
+        "hash": " ",
+        "name": "Armature"
+    },
+    "bones": [
+        {
+            "name": "root"
+        },
+        {
+            "length": 83,
+            "x": 2,
+            "y": 106.3,
+            "rotation": -90,
+            "name": "torso",
+            "parent": "root"
+        },
+        {
+            "length": 32,
+            "x": -17.8942,
+            "y": 43.8033,
+            "rotation": -92.7056,
+            "name": "lava-noha-1",
+            "parent": "root"
+        },
+        {
+            "length": 134,
+            "x": -57.9,
+            "y": -12.3128,
+            "rotation": -0.3822,
+            "name": "tien",
+            "parent": "root"
+        },
+        {
+            "length": 69,
+            "x": 12.25,
+            "y": 97.6263,
+            "rotation": -2.8297,
+            "name": "ruka2",
+            "parent": "root"
+        },
+        {
+            "length": 72,
+            "x": -14.6,
+            "y": 90.6019,
+            "rotation": 2.1226,
+            "name": "ruka1",
+            "parent": "root"
+        },
+        {
+            "length": 26,
+            "x": 13.6136,
+            "y": 41.3335,
+            "rotation": -91.4239,
+            "name": "prava-noha-1",
+            "parent": "root"
+        },
+        {
+            "length": 34,
+            "x": 22.2203,
+            "y": -0.3267,
+            "rotation": 0.6842,
+            "name": "lava-noha-2",
+            "parent": "lava-noha-1"
+        },
+        {
+            "length": 93,
+            "x": -78.1884,
+            "y": -0.644,
+            "rotation": 0.6151,
+            "name": "hlava",
+            "parent": "torso"
+        },
+        {
+            "length": 32,
+            "x": 17.4815,
+            "y": -1.6492,
+            "rotation": 1.9528,
+            "name": "prava-noha-2",
+            "parent": "prava-noha-1"
+        },
+        {
+            "length": 43,
+            "x": 35.7741,
+            "y": -19.5454,
+            "rotation": 89.3849,
+            "name": "obocie",
+            "parent": "hlava"
+        },
+        {
+            "length": 33,
+            "x": 45.0481,
+            "y": -15.3735,
+            "rotation": 88.7039,
+            "name": "ocoi",
+            "parent": "hlava"
+        }
+    ],
+    "slots": [
+        {
+            "name": "ruka2",
+            "bone": "ruka2",
+            "attachment": "3ruka2"
+        },
+        {
+            "name": "luk_part_2",
+            "bone": "ruka2",
+            "attachment": "luk_part_2"
+        },
+        {
+            "name": "luk_part_1",
+            "bone": "ruka2",
+            "attachment": "luk_part_1"
+        },
+        {
+            "name": "tien",
+            "bone": "tien",
+            "attachment": "tien"
+        },
+        {
+            "name": "prava-noha-2",
+            "bone": "prava-noha-2",
+            "attachment": "3prava-noha-2"
+        },
+        {
+            "name": "prava-noha-1",
+            "bone": "prava-noha-1",
+            "attachment": "1prava-noha-1"
+        },
+        {
+            "name": "lava-noha-2",
+            "bone": "lava-noha-2",
+            "attachment": "3lava-noha-2"
+        },
+        {
+            "name": "arrow111",
+            "bone": "ruka2",
+            "attachment": "1arrow"
+        },
+        {
+            "name": "lava-noha-1",
+            "bone": "lava-noha-1",
+            "attachment": "3lava-noha-1"
+        },
+        {
+            "name": "1torso",
+            "bone": "torso",
+            "attachment": "3torso"
+        },
+        {
+            "name": "hlava",
+            "bone": "hlava",
+            "attachment": "3hlava"
+        },
+        {
+            "name": "ocoi",
+            "bone": "ocoi",
+            "attachment": "ocoi"
+        },
+        {
+            "name": "1obocie",
+            "bone": "obocie",
+            "attachment": "3obocie"
+        },
+        {
+            "name": "ruka1",
+            "bone": "ruka1",
+            "attachment": "ruka1"
+        }
+    ],
+    "skins": {
+        "default": {
+            "ocoi": {
+                "ocoi": {
+                    "name": "ocoi",
+                    "width": 24,
+                    "height": 3,
+                    "x": 17.58,
+                    "y": -0.65,
+                    "rotation": 0.68
+                }
+            },
+            "prava-noha-2": {
+                "prava-noha-2": {
+                    "name": "prava-noha-2",
+                    "width": 24,
+                    "height": 32,
+                    "x": 12.22,
+                    "y": 2.52,
+                    "rotation": 89.47
+                },
+                "1prava-noha-2": {
+                    "name": "1prava-noha-2",
+                    "width": 24,
+                    "height": 32,
+                    "x": 12.22,
+                    "y": 2.52,
+                    "rotation": 89.47
+                },
+                "2prava-noha-2": {
+                    "name": "2prava-noha-2",
+                    "width": 24,
+                    "height": 32,
+                    "x": 12.22,
+                    "y": 2.52,
+                    "rotation": 89.47
+                },
+                "3prava-noha-2": {
+                    "name": "3prava-noha-2",
+                    "width": 24,
+                    "height": 32,
+                    "x": 12.22,
+                    "y": 2.52,
+                    "rotation": 89.47
+                }
+            },
+            "ruka1": {
+                "ruka1": {
+                    "name": "ruka1",
+                    "width": 94,
+                    "height": 45,
+                    "x": 38.24,
+                    "y": -0.5,
+                    "rotation": -2.12
+                },
+                "ruka1_void": {
+                    "name": "ruka1_void",
+                    "width": 94,
+                    "height": 45,
+                    "x": 38.24,
+                    "y": -0.5,
+                    "rotation": -2.12
+                }
+            },
+            "lava-noha-2": {
+                "lava-noha-2": {
+                    "name": "lava-noha-2",
+                    "width": 23,
+                    "height": 32,
+                    "x": 14.52,
+                    "y": 2.26,
+                    "rotation": 90.85
+                },
+                "1lava-noha-2": {
+                    "name": "1lava-noha-2",
+                    "width": 23,
+                    "height": 32,
+                    "x": 14.52,
+                    "y": 2.26,
+                    "rotation": 90.85
+                },
+                "2lava-noha-2": {
+                    "name": "2lava-noha-2",
+                    "width": 23,
+                    "height": 32,
+                    "x": 14.52,
+                    "y": 2.26,
+                    "rotation": 92.02
+                },
+                "3lava-noha-2": {
+                    "name": "3lava-noha-2",
+                    "width": 23,
+                    "height": 32,
+                    "x": 14.52,
+                    "y": 2.23,
+                    "rotation": 92.02
+                }
+            },
+            "lava-noha-1": {
+                "lava-noha-1": {
+                    "name": "lava-noha-1",
+                    "width": 18,
+                    "height": 26,
+                    "x": 13.28,
+                    "y": 0.65,
+                    "rotation": 92.04
+                },
+                "3lava-noha-1": {
+                    "name": "3lava-noha-1",
+                    "width": 18,
+                    "height": 26,
+                    "x": 13.28,
+                    "y": 0.65,
+                    "rotation": 92.71
+                },
+                "2lava-noha-1": {
+                    "name": "2lava-noha-1",
+                    "width": 18,
+                    "height": 26,
+                    "x": 14.69,
+                    "y": 0.75,
+                    "rotation": 92.71
+                },
+                "1lava-noha-1": {
+                    "name": "1lava-noha-1",
+                    "width": 18,
+                    "height": 26,
+                    "x": 14.69,
+                    "y": 0.75,
+                    "rotation": 92.71
+                }
+            },
+            "luk_part_2": {
+                "luk_part_2": {
+                    "name": "luk_part_2",
+                    "width": 12,
+                    "height": 50,
+                    "x": 42.32,
+                    "y": -33.25,
+                    "rotation": 2.83
+                }
+            },
+            "hlava": {
+                "hlava": {
+                    "name": "hlava",
+                    "width": 51,
+                    "height": 72,
+                    "x": 49.87,
+                    "y": -6.46,
+                    "rotation": 89.38
+                },
+                "1hlava": {
+                    "name": "1hlava",
+                    "width": 74,
+                    "height": 78,
+                    "x": 46.6,
+                    "y": -5.71,
+                    "rotation": 89.38
+                },
+                "3hlava": {
+                    "name": "3hlava",
+                    "width": 95,
+                    "height": 74,
+                    "x": 49.05,
+                    "y": -17.36,
+                    "rotation": 89.38
+                },
+                "2hlava": {
+                    "name": "2hlava",
+                    "width": 50,
+                    "height": 70,
+                    "x": 52.6,
+                    "y": -6.49,
+                    "rotation": 89.38
+                }
+            },
+            "tien": {
+                "tien": {
+                    "name": "tien",
+                    "width": 107,
+                    "height": 15,
+                    "x": 53.29,
+                    "y": 8.98,
+                    "rotation": 0.38
+                }
+            },
+            "1obocie": {
+                "1obocie": {
+                    "name": "1obocie",
+                    "width": 37,
+                    "height": 10,
+                    "x": 20.88,
+                    "y": -1.56
+                },
+                "obocie": {
+                    "name": "obocie",
+                    "width": 37,
+                    "height": 10,
+                    "x": 20.88,
+                    "y": -1.56,
+                    "rotation": 0.25
+                },
+                "3obocie": {
+                    "name": "3obocie",
+                    "width": 37,
+                    "height": 10,
+                    "x": 20.88,
+                    "y": -1.56
+                },
+                "2obocie": {
+                    "name": "2obocie",
+                    "width": 36,
+                    "height": 10,
+                    "x": 20.88,
+                    "y": -1.56
+                }
+            },
+            "prava-noha-1": {
+                "prava-noha-1": {
+                    "name": "prava-noha-1",
+                    "width": 17,
+                    "height": 25,
+                    "x": 7.96,
+                    "y": -0.39,
+                    "rotation": 91.42
+                },
+                "3prava-noha-1": {
+                    "name": "3prava-noha-1",
+                    "width": 17,
+                    "height": 25,
+                    "x": 7.96,
+                    "y": -0.39,
+                    "rotation": 91.42
+                },
+                "2prava-noha-1": {
+                    "name": "2prava-noha-1",
+                    "width": 17,
+                    "height": 25,
+                    "x": 7.96,
+                    "y": -0.39,
+                    "rotation": 91.42
+                },
+                "1prava-noha-1": {
+                    "name": "1prava-noha-1",
+                    "width": 17,
+                    "height": 25,
+                    "x": 7.96,
+                    "y": -0.39,
+                    "rotation": 91.42
+                }
+            },
+            "arrow111": {
+                "arrow": {
+                    "name": "arrow",
+                    "width": 88,
+                    "height": 14,
+                    "x": 57.65,
+                    "y": -0.31,
+                    "rotation": 4
+                },
+                "2arrow": {
+                    "name": "2arrow",
+                    "width": 96,
+                    "height": 18,
+                    "x": 52.82,
+                    "y": -0.32,
+                    "rotation": 4
+                },
+                "3arrow": {
+                    "name": "3arrow",
+                    "width": 88,
+                    "height": 14,
+                    "x": 57.65,
+                    "y": -0.31,
+                    "rotation": 2.83
+                },
+                "1arrow": {
+                    "name": "1arrow",
+                    "width": 88,
+                    "height": 14,
+                    "x": 57.65,
+                    "y": -0.31,
+                    "rotation": 2.83
+                },
+                "1arrow_void": {
+                    "name": "1arrow_void",
+                    "width": 88,
+                    "height": 14,
+                    "x": 57.65,
+                    "y": -0.31,
+                    "rotation": 2.83
+                },
+                "arrow_void": {
+                    "name": "arrow_void",
+                    "width": 88,
+                    "height": 14,
+                    "x": 57.65,
+                    "y": -0.31,
+                    "rotation": 2.83
+                },
+                "2arrow_void": {
+                    "name": "2arrow_void",
+                    "width": 88,
+                    "height": 14,
+                    "x": 57.65,
+                    "y": -0.31,
+                    "rotation": 2.83
+                },
+                "3arrow_void": {
+                    "name": "3arrow_void",
+                    "width": 88,
+                    "height": 14,
+                    "x": 57.65,
+                    "y": -0.31,
+                    "rotation": 2.83
+                }
+            },
+            "ruka2": {
+                "ruka2": {
+                    "name": "ruka2",
+                    "width": 84,
+                    "height": 146,
+                    "x": 37.18,
+                    "y": -2.13,
+                    "rotation": 2.83
+                },
+                "1ruka2": {
+                    "name": "1ruka2",
+                    "width": 84,
+                    "height": 146,
+                    "x": 37.18,
+                    "y": -2.13,
+                    "rotation": 2.83
+                },
+                "2ruka2": {
+                    "name": "2ruka2",
+                    "width": 84,
+                    "height": 146,
+                    "x": 37.18,
+                    "y": -2.13,
+                    "rotation": 2.83
+                },
+                "3ruka2": {
+                    "name": "3ruka2",
+                    "width": 84,
+                    "height": 146,
+                    "x": 37.18,
+                    "y": -2.13,
+                    "rotation": 2.83
+                },
+                "3ruka2_void": {
+                    "name": "3ruka2_void",
+                    "width": 84,
+                    "height": 146,
+                    "x": 37.18,
+                    "y": -2.13,
+                    "rotation": 2.83
+                },
+                "1ruka2_void": {
+                    "name": "3ruka2_void",
+                    "width": 84,
+                    "height": 146,
+                    "x": 37.18,
+                    "y": -2.13,
+                    "rotation": 2.83
+                },
+                "2ruka2_void": {
+                    "name": "3ruka2_void",
+                    "width": 84,
+                    "height": 146,
+                    "x": 37.18,
+                    "y": -2.13,
+                    "rotation": 2.83
+                },
+                "ruka2_void": {
+                    "name": "3ruka2_void",
+                    "width": 84,
+                    "height": 146,
+                    "x": 37.18,
+                    "y": -2.13,
+                    "rotation": 2.83
+                }
+            },
+            "1torso": {
+                "1torso": {
+                    "name": "1torso",
+                    "width": 94,
+                    "height": 127,
+                    "x": 14.8,
+                    "y": -23.5,
+                    "rotation": 90
+                },
+                "torso": {
+                    "name": "torso",
+                    "width": 94,
+                    "height": 127,
+                    "x": 14.8,
+                    "y": -23.5,
+                    "rotation": 90
+                },
+                "2torso": {
+                    "name": "2torso",
+                    "width": 94,
+                    "height": 127,
+                    "x": 14.8,
+                    "y": -23.5,
+                    "rotation": 90
+                },
+                "3torso": {
+                    "name": "3torso",
+                    "width": 94,
+                    "height": 127,
+                    "x": 14.8,
+                    "y": -23.5,
+                    "rotation": 90
+                }
+            },
+            "luk_part_1": {
+                "luk_part_1": {
+                    "name": "luk_part_1",
+                    "width": 15,
+                    "height": 62,
+                    "x": 26.42,
+                    "y": 23.77,
+                    "rotation": 2.83
+                }
+            }
+        }
+    },
+    "animations": {
+        "stoji": {
+            "bones": {
+                "torso": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 4.51
+                        }
+                    ]
+                },
+                "lava-noha-1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 2.71,
+                            "y": 5.21
+                        },
+                        {
+                            "time": 0.25,
+                            "x": -0.28,
+                            "y": 3.85
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": -17.37
+                        },
+                        {
+                            "time": 0.125,
+                            "angle": -7.37
+                        },
+                        {
+                            "time": 0.25,
+                            "angle": 2.63
+                        }
+                    ]
+                },
+                "tien": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 1.34
+                        }
+                    ]
+                },
+                "prava-noha-1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 1.13
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 16.88
+                        },
+                        {
+                            "time": 0.125,
+                            "angle": 8.88
+                        },
+                        {
+                            "time": 0.25,
+                            "angle": -0.12
+                        }
+                    ]
+                },
+                "prava-noha-2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -0.94,
+                            "y": -0.53
+                        }
+                    ]
+                },
+                "hlava": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -0.78
+                        }
+                    ]
+                },
+                "lava-noha-2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -2.52,
+                            "y": -0.46
+                        },
+                        {
+                            "time": 0.125,
+                            "x": -0.22,
+                            "y": -0.05
+                        },
+                        {
+                            "time": 0.25,
+                            "x": 0.4,
+                            "y": -0.05
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": -18.06
+                        },
+                        {
+                            "time": 0.125,
+                            "angle": -3.2
+                        },
+                        {
+                            "time": 0.25,
+                            "angle": -0.2
+                        }
+                    ]
+                },
+                "ruka1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 1.75
+                        }
+                    ]
+                },
+                "ruka2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 2.62
+                        }
+                    ]
+                }
+            }
+        },
+        "oci": {
+            "bones": {
+                "torso": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 4.51
+                        }
+                    ]
+                },
+                "lava-noha-1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -0.28,
+                            "y": 3.85
+                        }
+                    ]
+                },
+                "tien": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 1.34
+                        }
+                    ]
+                },
+                "prava-noha-1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 1.13
+                        }
+                    ]
+                },
+                "lava-noha-2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 0.4,
+                            "y": -0.05
+                        }
+                    ]
+                },
+                "prava-noha-2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -0.94,
+                            "y": -0.53
+                        }
+                    ]
+                },
+                "hlava": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -0.78
+                        },
+                        {
+                            "time": 0.2083,
+                            "x": -0.78,
+                            "y": -1.41
+                        },
+                        {
+                            "time": 1.2916,
+                            "x": -0.78,
+                            "y": -1.41
+                        },
+                        {
+                            "time": 1.4166,
+                            "x": -0.78
+                        }
+                    ]
+                },
+                "ocoi": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.125
+                        },
+                        {
+                            "time": 0.2083,
+                            "x": -0.03,
+                            "y": -3.08
+                        },
+                        {
+                            "time": 1.3333,
+                            "x": -0.03,
+                            "y": -3.08
+                        },
+                        {
+                            "time": 1.4166
+                        }
+                    ]
+                },
+                "obocie": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.5417
+                        },
+                        {
+                            "time": 0.7084,
+                            "x": -2.2,
+                            "y": 0.02
+                        },
+                        {
+                            "time": 0.8334
+                        },
+                        {
+                            "time": 1.0417,
+                            "x": -2.2,
+                            "y": 0.02
+                        },
+                        {
+                            "time": 1.1667
+                        }
+                    ]
+                },
+                "ruka1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 1.75
+                        }
+                    ]
+                },
+                "ruka2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 2.62
+                        }
+                    ]
+                }
+            }
+        },
+        "beh": {
+            "bones": {
+                "torso": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 4.51
+                        },
+                        {
+                            "time": 0.0833,
+                            "y": 3
+                        },
+                        {
+                            "time": 0.1666,
+                            "x": -0.47,
+                            "y": 7.91
+                        },
+                        {
+                            "time": 0.3333,
+                            "x": -0.47,
+                            "y": 6.68
+                        },
+                        {
+                            "time": 0.4166,
+                            "x": -0.47,
+                            "y": 4.98
+                        },
+                        {
+                            "time": 0.4999,
+                            "x": -0.47,
+                            "y": 8.1
+                        },
+                        {
+                            "time": 0.5832,
+                            "x": -0.47,
+                            "y": 9.34
+                        },
+                        {
+                            "time": 0.6665,
+                            "y": 4.51
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.3333,
+                            "angle": 1
+                        },
+                        {
+                            "time": 0.6666,
+                            "angle": 0
+                        }
+                    ]
+                },
+                "lava-noha-1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 2.71,
+                            "y": 5.21
+                        },
+                        {
+                            "time": 0.0833,
+                            "x": 2.04,
+                            "y": 5.21
+                        },
+                        {
+                            "time": 0.1666,
+                            "x": -3.03,
+                            "y": 5.87
+                        },
+                        {
+                            "time": 0.3333,
+                            "x": -1.71,
+                            "y": 3.79
+                        },
+                        {
+                            "time": 0.4166,
+                            "x": -1.71,
+                            "y": 3.14
+                        },
+                        {
+                            "time": 0.4999,
+                            "x": -0.77,
+                            "y": 6.1
+                        },
+                        {
+                            "time": 0.5832,
+                            "x": 0.18,
+                            "y": 8.37
+                        },
+                        {
+                            "time": 0.6665,
+                            "x": 2.71,
+                            "y": 5.21
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": -17.37
+                        },
+                        {
+                            "time": 0.0833,
+                            "angle": -5.11
+                        },
+                        {
+                            "time": 0.1666,
+                            "angle": 22.67
+                        },
+                        {
+                            "time": 0.2499,
+                            "angle": 22.71
+                        },
+                        {
+                            "time": 0.3332,
+                            "angle": 20.64
+                        },
+                        {
+                            "time": 0.4999,
+                            "angle": -1.23
+                        },
+                        {
+                            "time": 0.5832,
+                            "angle": -8.81
+                        },
+                        {
+                            "time": 0.6665,
+                            "angle": -17.37
+                        }
+                    ]
+                },
+                "lava-noha-2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.1667,
+                            "x": -3.09,
+                            "y": -0.55
+                        },
+                        {
+                            "time": 0.25,
+                            "x": -1.89,
+                            "y": 0.32
+                        },
+                        {
+                            "time": 0.3333,
+                            "x": 0.2,
+                            "y": 0.29
+                        },
+                        {
+                            "time": 0.4166,
+                            "x": -4.02,
+                            "y": -0.46
+                        },
+                        {
+                            "time": 0.6666
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": -18.06
+                        },
+                        {
+                            "time": 0.0833,
+                            "angle": -55.56
+                        },
+                        {
+                            "time": 0.1666,
+                            "angle": -54.77
+                        },
+                        {
+                            "time": 0.3333,
+                            "angle": -9.68
+                        },
+                        {
+                            "time": 0.4166,
+                            "angle": -13.31
+                        },
+                        {
+                            "time": 0.4999,
+                            "angle": -7.73
+                        },
+                        {
+                            "time": 0.5832,
+                            "angle": -9.02
+                        },
+                        {
+                            "time": 0.6665,
+                            "angle": -18.06
+                        }
+                    ]
+                },
+                "prava-noha-1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 1.13
+                        },
+                        {
+                            "time": 0.0833,
+                            "x": -1.12,
+                            "y": 1.13
+                        },
+                        {
+                            "time": 0.1666,
+                            "x": -1.1,
+                            "y": 2.63
+                        },
+                        {
+                            "time": 0.3333,
+                            "x": 0.09,
+                            "y": 3.1
+                        },
+                        {
+                            "time": 0.5833,
+                            "x": 0.3,
+                            "y": 3.79
+                        },
+                        {
+                            "time": 0.6666,
+                            "y": 1.13
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 16.88
+                        },
+                        {
+                            "time": 0.1667,
+                            "angle": -26.17
+                        },
+                        {
+                            "time": 0.3334,
+                            "angle": -37.94
+                        },
+                        {
+                            "time": 0.5001,
+                            "angle": -9.05
+                        },
+                        {
+                            "time": 0.5834,
+                            "angle": 13.01
+                        },
+                        {
+                            "time": 0.6667,
+                            "angle": 16.88
+                        }
+                    ]
+                },
+                "prava-noha-2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.4167,
+                            "x": 0.3,
+                            "y": -0.36
+                        },
+                        {
+                            "time": 0.5,
+                            "x": -2.31,
+                            "y": -1.46
+                        },
+                        {
+                            "time": 0.5833,
+                            "x": -5.16,
+                            "y": -1.34
+                        },
+                        {
+                            "time": 0.6666,
+                            "x": -0.94,
+                            "y": -0.53
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.0833,
+                            "angle": -29.03
+                        },
+                        {
+                            "time": 0.1666,
+                            "angle": 1.12
+                        },
+                        {
+                            "time": 0.3333,
+                            "angle": -24.98
+                        },
+                        {
+                            "time": 0.4166,
+                            "angle": -30.2
+                        },
+                        {
+                            "time": 0.4999,
+                            "angle": -57.71
+                        },
+                        {
+                            "time": 0.5832,
+                            "angle": -38.33
+                        },
+                        {
+                            "time": 0.6665,
+                            "angle": 0
+                        }
+                    ]
+                },
+                "hlava": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -0.78
+                        },
+                        {
+                            "time": 0.0833
+                        },
+                        {
+                            "time": 0.1666,
+                            "x": -1.56
+                        },
+                        {
+                            "time": 0.3333
+                        },
+                        {
+                            "time": 0.4166,
+                            "x": 0.78
+                        },
+                        {
+                            "time": 0.4999
+                        },
+                        {
+                            "time": 0.5832
+                        },
+                        {
+                            "time": 0.6665,
+                            "x": -0.78
+                        }
+                    ]
+                },
+                "tien": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 1.34
+                        },
+                        {
+                            "time": 0.3333,
+                            "x": -3.57
+                        },
+                        {
+                            "time": 0.6666,
+                            "x": 1.34
+                        }
+                    ]
+                },
+                "ruka1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 1.75
+                        },
+                        {
+                            "time": 0.0833,
+                            "y": 0.44
+                        },
+                        {
+                            "time": 0.1666,
+                            "y": 6.99
+                        },
+                        {
+                            "time": 0.3333,
+                            "y": 4.37
+                        },
+                        {
+                            "time": 0.4166,
+                            "y": 1.75
+                        },
+                        {
+                            "time": 0.4999,
+                            "y": 5.68
+                        },
+                        {
+                            "time": 0.5832,
+                            "y": 6.55
+                        },
+                        {
+                            "time": 0.6665,
+                            "y": 1.75
+                        }
+                    ]
+                },
+                "ruka2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 2.62
+                        },
+                        {
+                            "time": 0.0833,
+                            "y": 1.31
+                        },
+                        {
+                            "time": 0.1666,
+                            "y": 6.12
+                        },
+                        {
+                            "time": 0.2499,
+                            "y": 5.24
+                        },
+                        {
+                            "time": 0.3332,
+                            "y": 4.37
+                        },
+                        {
+                            "time": 0.4165,
+                            "y": 3.06
+                        },
+                        {
+                            "time": 0.4998,
+                            "y": 5.68
+                        },
+                        {
+                            "time": 0.5831,
+                            "y": 6.55
+                        },
+                        {
+                            "time": 0.6664,
+                            "y": 2.62
+                        }
+                    ]
+                }
+            }
+        },
+        "stoji1": {
+            "bones": {
+                "torso": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 4.51
+                        },
+                        {
+                            "time": 0.8333,
+                            "x": 0.01,
+                            "y": 4.51
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": -0.1
+                        },
+                        {
+                            "time": 0.8333,
+                            "angle": -0.11
+                        }
+                    ]
+                },
+                "lava-noha-1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -0.3,
+                            "y": 3.87
+                        },
+                        {
+                            "time": 0.8333,
+                            "x": -0.28,
+                            "y": 3.85
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 2.63
+                        },
+                        {
+                            "time": 0.8333,
+                            "angle": 2.64
+                        }
+                    ]
+                },
+                "tien": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 1.33
+                        },
+                        {
+                            "time": 0.8333,
+                            "x": 1.34
+                        }
+                    ]
+                },
+                "ruka2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 0.01,
+                            "y": 2.62
+                        },
+                        {
+                            "time": 0.8333,
+                            "y": 2.62
+                        }
+                    ]
+                },
+                "ruka1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 1.75
+                        }
+                    ]
+                },
+                "prava-noha-1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 1.13
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 2.63
+                        },
+                        {
+                            "time": 0.8333,
+                            "angle": 2.64
+                        }
+                    ]
+                },
+                "lava-noha-2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 0.4,
+                            "y": -0.05
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 2.63
+                        },
+                        {
+                            "time": 0.8333,
+                            "angle": 2.64
+                        }
+                    ]
+                },
+                "hlava": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -0.78
+                        }
+                    ]
+                },
+                "prava-noha-2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -0.94,
+                            "y": -0.53
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 2.63
+                        },
+                        {
+                            "time": 0.8333,
+                            "angle": 2.64
+                        }
+                    ]
+                }
+            }
+        },
+        "stoji2": {
+            "bones": {
+                "torso": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 4.51
+                        },
+                        {
+                            "time": 0.625,
+                            "x": -0.25,
+                            "y": 5.46
+                        },
+                        {
+                            "time": 0.8333,
+                            "x": -0.25,
+                            "y": 5.46
+                        },
+                        {
+                            "time": 1.3333,
+                            "x": 0.01,
+                            "y": 4.51
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": -0.1
+                        },
+                        {
+                            "time": 0.625,
+                            "angle": 1
+                        },
+                        {
+                            "time": 0.8333,
+                            "angle": 1
+                        },
+                        {
+                            "time": 1.3333,
+                            "angle": -0.11
+                        }
+                    ]
+                },
+                "lava-noha-1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -0.3,
+                            "y": 3.87
+                        },
+                        {
+                            "time": 1.3333,
+                            "x": -0.28,
+                            "y": 3.85
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 2.63
+                        },
+                        {
+                            "time": 1.3333,
+                            "angle": 2.64
+                        }
+                    ]
+                },
+                "tien": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 1.33
+                        },
+                        {
+                            "time": 1.3333,
+                            "x": 1.34
+                        }
+                    ]
+                },
+                "ruka2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 0.01,
+                            "y": 2.62
+                        },
+                        {
+                            "time": 0.625,
+                            "x": -1.04,
+                            "y": 4.18
+                        },
+                        {
+                            "time": 0.8333,
+                            "x": -1.04,
+                            "y": 4.18
+                        },
+                        {
+                            "time": 1.3333,
+                            "y": 2.62
+                        }
+                    ]
+                },
+                "ruka1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 1.75
+                        },
+                        {
+                            "time": 0.625,
+                            "x": -0.73,
+                            "y": 2.84
+                        },
+                        {
+                            "time": 0.8333,
+                            "x": -0.73,
+                            "y": 2.84
+                        },
+                        {
+                            "time": 1.3333,
+                            "y": 1.75
+                        }
+                    ]
+                },
+                "prava-noha-1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 1.13
+                        }
+                    ]
+                },
+                "lava-noha-2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 0.4,
+                            "y": -0.05
+                        }
+                    ]
+                },
+                "hlava": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -0.78
+                        },
+                        {
+                            "time": 0.625,
+                            "x": -1.23,
+                            "y": 0.03
+                        },
+                        {
+                            "time": 0.8333,
+                            "x": -1.23,
+                            "y": 0.03
+                        },
+                        {
+                            "time": 1.3333,
+                            "x": -0.78
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.625,
+                            "angle": -1
+                        },
+                        {
+                            "time": 0.8333,
+                            "angle": -1
+                        },
+                        {
+                            "time": 1.3333,
+                            "angle": 0
+                        }
+                    ]
+                },
+                "prava-noha-2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -0.94,
+                            "y": -0.53
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

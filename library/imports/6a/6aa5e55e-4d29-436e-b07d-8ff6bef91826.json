@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "Archer_anim-html",
+    "texture": "5d1dc817-fdcf-4270-bf50-366441f81bee",
+    "atlas": "",
+    "rect": [
+      1,
+      1,
+      510,
+      508
+    ],
+    "offset": [
+      0,
+      1
+    ],
+    "originalSize": [
+      512,
+      512
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

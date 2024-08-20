@@ -61,7 +61,7 @@ export default class TiniArcher_GameView extends cc.Component {
         this.pgbPowerBar.progress = 0;
         this.nArrow.angle = 0;
         this.unschedule(this.increaseForceAndAngle);
-        this.nTrajectoryNode.removeAllChildren();
+       
         
     }
 
