@@ -46,18 +46,21 @@ var TiniArcher_BackGround = /** @class */ (function (_super) {
     TiniArcher_BackGround.prototype.update = function (dt) {
         if (!TiniArcher_GameView_1.default.instance.isBgMove)
             return;
-        if (this.node.x <= -1920) {
+        if (this.node.x <= -1960) {
             this.resetPos();
         }
         if (this.idBg == TiniArcher_GameView_1.default.instance.indexBg) {
+            console.log("idBg ", this.idBg);
             if (this.node.x <= 0) {
+                this.node.x = 0;
                 TiniArcher_GameView_1.default.instance.isBgMove = false;
             }
         }
         this.node.x -= 5;
     };
     TiniArcher_BackGround.prototype.resetPos = function () {
-        this.node.x = 960;
+        this.node.x = 980;
+        console.log("Nền đã đặt lại vị trí:", this.idBg, this.node.x);
     };
     __decorate([
         property

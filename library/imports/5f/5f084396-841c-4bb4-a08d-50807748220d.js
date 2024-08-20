@@ -79,10 +79,9 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
     };
     TiniArcher_GameView.prototype.spawArrow = function () {
         if (this.currentArrow) {
-            this.currentArrow.destroy(); // Xóa mũi tên cũ nếu tồn tại
+            this.currentArrow.destroy();
         }
-        this.currentArrow = cc.instantiate(this.pfArrow); // Tạo mũi tên mới từ prefab
-        // Đặt vị trí ban đầu của mũi tên
+        this.currentArrow = cc.instantiate(this.pfArrow);
         this.nArrow.addChild(this.currentArrow);
     };
     TiniArcher_GameView.prototype.shootArrow = function () {
@@ -93,11 +92,6 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
     };
     TiniArcher_GameView.prototype.trajectoryCircle = function (points) {
         this.nTrajectoryNode.removeAllChildren();
-        // points.forEach(e => {
-        //     let cricle = cc.instantiate(this.pfCircle)
-        //     cricle.setPosition(e);
-        //     this.nTrajectoryNode.addChild(cricle);
-        // })
         for (var i = 0; i < points.length; i++) {
             var cricle = cc.instantiate(this.pfCircle);
             cricle.setPosition(points[i]);
@@ -133,12 +127,17 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         this.currentArrow.setPosition(this.nArrow.x, this.currentAngle);
     };
     TiniArcher_GameView.prototype.resetBg = function () {
+        var _this = this;
         this.isBgMove = true;
         console.log("di chuyen ", this.isBgMove);
         this.indexBg++;
         if (this.indexBg > 2) {
             this.indexBg = 0;
         }
+        console.log("bg ", this.indexBg);
+        this.scheduleOnce(function () {
+            _this.spawArrow();
+        }, 2);
     };
     TiniArcher_GameView.prototype.shakeTarget = function (target) {
         var shakeDuration = 0.25; // Thời gian của mỗi bước rung
@@ -147,13 +146,10 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         for (var i = 0; i < angles.length; i++) {
             tween = tween.to(shakeDuration, { angle: angles[i] });
         }
-        // Quay trở lại góc 0
         tween.to(shakeDuration, { angle: 0 });
-        // Chạy hiệu ứng
         tween.start();
     };
     TiniArcher_GameView.prototype.update = function (dt) {
-        var _this = this;
         if (this.isCharging) {
             this.currentForce = Math.min(this.currentForce + 1000 * dt, this.maxForce);
             this.currentAngle = Math.min(this.currentAngle + 45 * dt, this.maxAngle);
@@ -176,9 +172,6 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
             else {
                 this.isArrowFlying = false;
                 this.resetBg();
-                this.scheduleOnce(function () {
-                    _this.spawArrow();
-                }, 2);
             }
         }
         else {

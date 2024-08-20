@@ -73,10 +73,9 @@ export default class TiniArcher_GameView extends cc.Component {
 
     spawArrow() {
         if (this.currentArrow) {
-            this.currentArrow.destroy(); // Xóa mũi tên cũ nếu tồn tại
+            this.currentArrow.destroy();
         }
-        this.currentArrow = cc.instantiate(this.pfArrow); // Tạo mũi tên mới từ prefab
-         // Đặt vị trí ban đầu của mũi tên
+        this.currentArrow = cc.instantiate(this.pfArrow);
         this.nArrow.addChild(this.currentArrow); 
     }
 
@@ -90,12 +89,6 @@ export default class TiniArcher_GameView extends cc.Component {
 
     trajectoryCircle(points) {
         this.nTrajectoryNode.removeAllChildren();
-        // points.forEach(e => {
-        //     let cricle = cc.instantiate(this.pfCircle)
-        //     cricle.setPosition(e);
-        //     this.nTrajectoryNode.addChild(cricle);
-        // })
-
         for(let i = 0; i < points.length; i++) {
             let cricle = cc.instantiate(this.pfCircle)
             cricle.setPosition(points[i]);
@@ -143,7 +136,10 @@ export default class TiniArcher_GameView extends cc.Component {
         if(this.indexBg > 2) {
             this.indexBg = 0;
         }
-        
+        console.log("bg ", this.indexBg);  
+        this.scheduleOnce(() => {
+            this.spawArrow();
+        },2)
     }
     shakeTarget(target: cc.Node) {
         let shakeDuration = 0.25; // Thời gian của mỗi bước rung
@@ -154,12 +150,7 @@ export default class TiniArcher_GameView extends cc.Component {
     for (let i = 0; i < angles.length; i++) {
         tween = tween.to(shakeDuration, { angle: angles[i] });
     }
-
-    
-        // Quay trở lại góc 0
         tween.to(shakeDuration, { angle: 0 });
-    
-        // Chạy hiệu ứng
         tween.start();
     }
 
@@ -185,9 +176,6 @@ export default class TiniArcher_GameView extends cc.Component {
             } else {
                 this.isArrowFlying = false;
                 this.resetBg();
-                this.scheduleOnce(() => {
-                    this.spawArrow(); 
-                },2)
                 
             }
         } 
@@ -195,6 +183,7 @@ export default class TiniArcher_GameView extends cc.Component {
             this.currentForce = Math.max(this.currentForce - 1000 * dt, this.startForce);
             this.currentAngle = Math.max(this.currentAngle - 45 * dt, this.startAngle);
             
+           
 
         }
         this.updatePowerBar();

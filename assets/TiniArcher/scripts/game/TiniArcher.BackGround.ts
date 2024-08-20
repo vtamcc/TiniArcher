@@ -27,12 +27,14 @@ export default class TiniArcher_BackGround extends cc.Component {
 
     update (dt) {
         if(!TiniArcher_GameView.instance.isBgMove) return;
-        if(this.node.x <= -1920 ) {
+        if(this.node.x <= -1960 ) {
             this.resetPos();
         }
 
         if(this.idBg == TiniArcher_GameView.instance.indexBg) {
+            console.log("idBg ", this.idBg);
             if(this.node.x <= 0) {
+                this.node.x = 0;
                 TiniArcher_GameView.instance.isBgMove = false;
             }
         }
@@ -40,6 +42,7 @@ export default class TiniArcher_BackGround extends cc.Component {
     }
 
     resetPos() {
-        this.node.x = 960;
+        this.node.x = 980;
+        console.log("Nền đã đặt lại vị trí:",this.idBg, this.node.x);
     }
 }
