@@ -54,7 +54,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        66,
+        0,
         0,
         0,
         0,
@@ -148,7 +148,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "76b4b877-c3a9-4122-b639-0c6faa47db10"
     },
     "fileId": "",
     "sync": false

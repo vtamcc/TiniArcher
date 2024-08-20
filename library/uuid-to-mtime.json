@@ -250,8 +250,8 @@
     "relativePath": "TiniArcher/res/img/character"
   },
   "d2c161de-fa38-47cd-9526-8da4c10a1ad5": {
-    "asset": 1724146646166,
-    "meta": 1724146646174,
+    "asset": 1724151947901,
+    "meta": 1724151947905,
     "relativePath": "TiniArcher/prefabs/GameView.prefab"
   },
   "7e007879-ae3d-4c0d-923a-2a1bd4fddf41": {
@@ -789,19 +789,19 @@
     "meta": 1724141397577,
     "relativePath": "TiniArcher/scripts/game/TiniArcher.BackGround.ts"
   },
-  "f9bd75d1-10b9-437c-ab00-5463245accd0": {
-    "asset": 1724141988368,
-    "meta": 1724141989837,
-    "relativePath": "TiniArcher/scripts/TiniArcher.ColliderManager.ts"
-  },
   "76b4b877-c3a9-4122-b639-0c6faa47db10": {
-    "asset": 1724143759916,
-    "meta": 1724143768832,
+    "asset": 1724148800951,
+    "meta": 1724148800958,
     "relativePath": "TiniArcher/prefabs/game/arrow.prefab"
   },
   "5f084396-841c-4bb4-a08d-50807748220d": {
-    "asset": 1724146628831,
-    "meta": 1724146631431,
+    "asset": 1724151888139,
+    "meta": 1724151889446,
     "relativePath": "TiniArcher/scripts/game/TiniArcher.GameView.ts"
+  },
+  "f9bd75d1-10b9-437c-ab00-5463245accd0": {
+    "asset": 1724151945681,
+    "meta": 1724151947723,
+    "relativePath": "TiniArcher/scripts/TiniArcher.ColliderManager.ts"
   }
 }

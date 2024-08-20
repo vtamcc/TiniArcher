@@ -44,9 +44,18 @@ var TiniArcher_Collider = /** @class */ (function (_super) {
     TiniArcher_Collider.prototype.onCollisionEnter = function (other, self) {
         if (other.tag == 1) {
             TiniArcher_GameView_1.default.instance.isArrowFlying = false;
+            TiniArcher_GameView_1.default.instance.isBgMove = true;
+            TiniArcher_GameView_1.default.instance.indexBg++;
+            if (TiniArcher_GameView_1.default.instance.indexBg > 2) {
+                TiniArcher_GameView_1.default.instance.indexBg = 0;
+            }
+            this.scheduleOnce(function () {
+                TiniArcher_GameView_1.default.instance.spawArrow();
+            }, 2);
+            console.log("di chuyen ", TiniArcher_GameView_1.default.instance.isBgMove);
             TiniArcher_GameView_1.default.instance.nTrajectoryNode.removeAllChildren();
             self.node.parent = other.node;
-            TiniArcher_GameView_1.default.instance.resetBg();
+            //TiniArcher_GameView.instance.spawArrow();
             console.log('va cham');
             var collisionPoint = self.world.aabb.center;
             TiniArcher_GameView_1.default.instance.shakeTarget(TiniArcher_GameView_1.default.instance.nStick);

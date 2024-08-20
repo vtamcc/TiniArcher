@@ -51,6 +51,7 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         _this.trajectoryPoints = []; // Lưu các điểm quỹ đạo
         _this.isArrowFlying = false; // Đánh dấu khi mũi tên đang bay
         _this.trajectoryIndex = 0; // Chỉ số hiện tại trong quỹ đạo
+        _this.currentArrow = null;
         _this.indexBg = 0;
         return _this;
     }
@@ -61,6 +62,7 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         cc.director.getPhysicsManager().debugDrawFlags = cc.PhysicsManager.DrawBits.e_shapeBit;
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
         this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
+        this.spawArrow();
     };
     TiniArcher_GameView.prototype.onTouchStart = function (event) {
         this.isCharging = true;
@@ -71,13 +73,23 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         this.trajectoryCircle(this.updateTrajectory(this.currentForce, this.currentAngle));
         this.updatePowerBar();
         this.trajectoryPoints = this.updateTrajectory(this.currentForce, this.currentAngle);
-        this.shootArrow();
         this.nTrajectoryNode.removeAllChildren();
+        this.shootArrow();
         //this.shootArrow(this.currentForce,this.currentAngle);
     };
+    TiniArcher_GameView.prototype.spawArrow = function () {
+        if (this.currentArrow) {
+            this.currentArrow.destroy(); // Xóa mũi tên cũ nếu tồn tại
+        }
+        this.currentArrow = cc.instantiate(this.pfArrow); // Tạo mũi tên mới từ prefab
+        // Đặt vị trí ban đầu của mũi tên
+        this.nArrow.addChild(this.currentArrow);
+    };
     TiniArcher_GameView.prototype.shootArrow = function () {
-        this.isArrowFlying = true;
-        this.trajectoryIndex = 0;
+        if (this.currentArrow) {
+            this.isArrowFlying = true;
+            this.trajectoryIndex = 0;
+        }
     };
     TiniArcher_GameView.prototype.trajectoryCircle = function (points) {
         this.nTrajectoryNode.removeAllChildren();
@@ -97,7 +109,7 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
     };
     TiniArcher_GameView.prototype.updateTrajectory = function (force, angle) {
         var points = [];
-        var startPosition = this.nArrow.position;
+        var startPosition = this.currentArrow.position;
         for (var i = 0; i < 50; i++) {
             var t = i * 0.03;
             var x = startPosition.x + force * Math.cos(angle * Math.PI / 180) * t;
@@ -107,7 +119,7 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         return points;
     };
     TiniArcher_GameView.prototype.updateAngleArrow = function (angle) {
-        this.nArrow.angle = angle;
+        this.currentArrow.angle = angle;
     };
     TiniArcher_GameView.prototype.updatePowerBar = function () {
         this.pgbPowerBar.progress = this.currentForce / this.maxForce;
@@ -115,15 +127,15 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
     TiniArcher_GameView.prototype.updateArrowPos = function () {
         var newY = this.startAngle + (this.currentAngle / this.maxAngle) * 100;
         //let newX = this.startAngle - (this.currentAngle / this.maxAngle) * 5;
-        this.nArrow.setPosition(this.nArrow.x, newY);
+        this.currentArrow.setPosition(this.nArrow.x, newY);
     };
     TiniArcher_GameView.prototype.resetArrowPosition = function () {
-        this.nArrow.setPosition(this.nArrow.x, this.currentAngle);
+        this.currentArrow.setPosition(this.nArrow.x, this.currentAngle);
     };
     TiniArcher_GameView.prototype.resetBg = function () {
         this.isBgMove = true;
+        console.log("di chuyen ", this.isBgMove);
         this.indexBg++;
-        this.nArrow.setPosition(66, 0);
         if (this.indexBg > 2) {
             this.indexBg = 0;
         }
@@ -141,6 +153,7 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         tween.start();
     };
     TiniArcher_GameView.prototype.update = function (dt) {
+        var _this = this;
         if (this.isCharging) {
             this.currentForce = Math.min(this.currentForce + 1000 * dt, this.maxForce);
             this.currentAngle = Math.min(this.currentAngle + 45 * dt, this.maxAngle);
@@ -153,16 +166,19 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
             if (this.trajectoryIndex < this.trajectoryPoints.length - 1) {
                 var currentPoint = this.trajectoryPoints[this.trajectoryIndex];
                 var nextPoint = this.trajectoryPoints[this.trajectoryIndex + 1];
-                //this.isCharging = false;
-                this.nArrow.setPosition(nextPoint);
+                console.log("bannn");
+                this.currentArrow.setPosition(nextPoint);
                 var direction = nextPoint.sub(currentPoint);
                 var angle = Math.atan2(direction.y, direction.x) * 180 / Math.PI;
-                this.nArrow.angle = angle;
+                this.currentArrow.angle = angle;
                 this.trajectoryIndex++;
             }
             else {
                 this.isArrowFlying = false;
                 this.resetBg();
+                this.scheduleOnce(function () {
+                    _this.spawArrow();
+                }, 2);
             }
         }
         else {

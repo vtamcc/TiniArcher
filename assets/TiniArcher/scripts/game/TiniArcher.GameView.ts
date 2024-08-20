@@ -41,7 +41,7 @@ export default class TiniArcher_GameView extends cc.Component {
     trajectoryPoints = [];  // Lưu các điểm quỹ đạo
     isArrowFlying = false;  // Đánh dấu khi mũi tên đang bay
     trajectoryIndex = 0;  // Chỉ số hiện tại trong quỹ đạo
-
+    currentArrow = null;
     indexBg = 0;
 
 
@@ -49,8 +49,9 @@ export default class TiniArcher_GameView extends cc.Component {
         TiniArcher_GameView.instance = this;
         cc.director.getPhysicsManager().enabled = true;
         cc.director.getPhysicsManager().debugDrawFlags = cc.PhysicsManager.DrawBits.e_shapeBit;
-        this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
-        this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
+        this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
+        this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this)
+        this.spawArrow();
     }
 
     onTouchStart(event: cc.Touch) {
@@ -64,15 +65,26 @@ export default class TiniArcher_GameView extends cc.Component {
         this.trajectoryCircle(this.updateTrajectory(this.currentForce, this.currentAngle));
         this.updatePowerBar();
         this.trajectoryPoints = this.updateTrajectory(this.currentForce, this.currentAngle);
-        this.shootArrow();
         this.nTrajectoryNode.removeAllChildren();
+        this.shootArrow();
         //this.shootArrow(this.currentForce,this.currentAngle);
 
     }
 
+    spawArrow() {
+        if (this.currentArrow) {
+            this.currentArrow.destroy(); // Xóa mũi tên cũ nếu tồn tại
+        }
+        this.currentArrow = cc.instantiate(this.pfArrow); // Tạo mũi tên mới từ prefab
+         // Đặt vị trí ban đầu của mũi tên
+        this.nArrow.addChild(this.currentArrow); 
+    }
+
     shootArrow() {
-        this.isArrowFlying = true;
-        this.trajectoryIndex = 0;
+        if (this.currentArrow) {
+            this.isArrowFlying = true;
+            this.trajectoryIndex = 0;
+        }
     }
 
 
@@ -96,7 +108,7 @@ export default class TiniArcher_GameView extends cc.Component {
 
     updateTrajectory(force, angle) {
         let points = [];
-        let startPosition = this.nArrow.position;
+        let startPosition = this.currentArrow.position;
         for (let i = 0; i < 50; i++) {
             let t = i * 0.03;
             let x = startPosition.x + force * Math.cos(angle * Math.PI / 180) * t;
@@ -108,7 +120,7 @@ export default class TiniArcher_GameView extends cc.Component {
 
 
     updateAngleArrow(angle) {
-        this.nArrow.angle = angle;
+        this.currentArrow.angle = angle;
     }
 
     updatePowerBar() {
@@ -118,20 +130,20 @@ export default class TiniArcher_GameView extends cc.Component {
     updateArrowPos() {
         let newY = this.startAngle + (this.currentAngle / this.maxAngle) * 100
         //let newX = this.startAngle - (this.currentAngle / this.maxAngle) * 5;
-        this.nArrow.setPosition(this.nArrow.x, newY);
+        this.currentArrow.setPosition(this.nArrow.x, newY);
     }
     resetArrowPosition() {
-        this.nArrow.setPosition(this.nArrow.x, this.currentAngle);
+        this.currentArrow.setPosition(this.nArrow.x, this.currentAngle);
     }
 
     resetBg() {
         this.isBgMove = true;
+        console.log("di chuyen ", this.isBgMove);
         this.indexBg++;
-        this.nArrow.setPosition(66,0);
         if(this.indexBg > 2) {
             this.indexBg = 0;
         }
-
+        
     }
     shakeTarget(target: cc.Node) {
         let shakeDuration = 0.25; // Thời gian của mỗi bước rung
@@ -164,16 +176,19 @@ export default class TiniArcher_GameView extends cc.Component {
             if (this.trajectoryIndex < this.trajectoryPoints.length - 1) {
                 let currentPoint = this.trajectoryPoints[this.trajectoryIndex];
                 let nextPoint = this.trajectoryPoints[this.trajectoryIndex + 1];
-                //this.isCharging = false;
-                this.nArrow.setPosition(nextPoint);
-
+                console.log("bannn");
+                this.currentArrow.setPosition(nextPoint);
                 let direction = nextPoint.sub(currentPoint);
                 let angle = Math.atan2(direction.y, direction.x) * 180 / Math.PI;
-                this.nArrow.angle = angle;
+                this.currentArrow.angle = angle;
                 this.trajectoryIndex++;
             } else {
                 this.isArrowFlying = false;
                 this.resetBg();
+                this.scheduleOnce(() => {
+                    this.spawArrow(); 
+                },2)
+                
             }
         } 
         else {

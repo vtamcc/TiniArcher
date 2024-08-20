@@ -3597,7 +3597,7 @@
       "__id__": 86
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 101
@@ -3741,7 +3741,7 @@
       "__id__": 86
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [],
     "_prefab": {
       "__id__": 106
@@ -3768,7 +3768,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        66,
+        0,
         0,
         0,
         0,
@@ -3838,7 +3838,7 @@
       "__id__": 95
     },
     "nArrow": {
-      "__id__": 100
+      "__id__": 105
     },
     "nStick": {
       "__id__": 13
