@@ -48,6 +48,7 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         _this.currentAngle = 0;
         _this.isCharging = false;
         _this.isBgMove = false;
+        _this.isStop = false;
         _this.trajectoryPoints = []; // Lưu các điểm quỹ đạo
         _this.isArrowFlying = false; // Đánh dấu khi mũi tên đang bay
         _this.trajectoryIndex = 0; // Chỉ số hiện tại trong quỹ đạo
@@ -129,15 +130,16 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
     TiniArcher_GameView.prototype.resetBg = function () {
         var _this = this;
         this.isBgMove = true;
-        console.log("di chuyen ", this.isBgMove);
-        this.indexBg++;
-        if (this.indexBg > 2) {
-            this.indexBg = 0;
-        }
-        console.log("bg ", this.indexBg);
+        // console.log("di chuyen ", this.isBgMove);
+        // this.indexBg++;
+        // if(this.indexBg > 2) {
+        //     this.indexBg = 0;
+        // }
         this.scheduleOnce(function () {
+            _this.isBgMove = false;
+            _this.isStop = false;
             _this.spawArrow();
-        }, 2);
+        }, 3.5);
     };
     TiniArcher_GameView.prototype.shakeTarget = function (target) {
         var shakeDuration = 0.25; // Thời gian của mỗi bước rung
@@ -153,7 +155,6 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         if (this.isCharging) {
             this.currentForce = Math.min(this.currentForce + 1000 * dt, this.maxForce);
             this.currentAngle = Math.min(this.currentAngle + 45 * dt, this.maxAngle);
-            console.log("Goc ban ", this.currentAngle);
             this.trajectoryCircle(this.updateTrajectory(this.currentForce, this.currentAngle));
             this.updateAngleArrow(this.currentAngle);
             this.updateArrowPos();
@@ -162,7 +163,6 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
             if (this.trajectoryIndex < this.trajectoryPoints.length - 1) {
                 var currentPoint = this.trajectoryPoints[this.trajectoryIndex];
                 var nextPoint = this.trajectoryPoints[this.trajectoryIndex + 1];
-                console.log("bannn");
                 this.currentArrow.setPosition(nextPoint);
                 var direction = nextPoint.sub(currentPoint);
                 var angle = Math.atan2(direction.y, direction.x) * 180 / Math.PI;

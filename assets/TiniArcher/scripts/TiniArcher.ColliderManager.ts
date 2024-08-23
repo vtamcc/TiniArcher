@@ -25,17 +25,15 @@ export default class TiniArcher_Collider extends cc.Component {
     onCollisionEnter(other, self) {
         if (other.tag == 1) {
             TiniArcher_GameView.instance.isArrowFlying = false;
-            
             TiniArcher_GameView.instance.nTrajectoryNode.removeAllChildren();
             self.node.parent = other.node;
-            console.log('va cham');
             let collisionPoint = self.world.aabb.center;
             TiniArcher_GameView.instance.shakeTarget(TiniArcher_GameView.instance.nStick)
             let localPoint = other.node.convertToNodeSpaceAR(collisionPoint);
             self.node.setPosition(localPoint.x, localPoint.y);
-            console.log("old ",localPoint)
             self.node.angle
            TiniArcher_GameView.instance.resetBg();
+           console.log( 'background di chuyen',TiniArcher_GameView.instance.isBgMove)
 
         }
 

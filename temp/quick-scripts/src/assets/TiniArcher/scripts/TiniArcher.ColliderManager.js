@@ -46,14 +46,13 @@ var TiniArcher_Collider = /** @class */ (function (_super) {
             TiniArcher_GameView_1.default.instance.isArrowFlying = false;
             TiniArcher_GameView_1.default.instance.nTrajectoryNode.removeAllChildren();
             self.node.parent = other.node;
-            console.log('va cham');
             var collisionPoint = self.world.aabb.center;
             TiniArcher_GameView_1.default.instance.shakeTarget(TiniArcher_GameView_1.default.instance.nStick);
             var localPoint = other.node.convertToNodeSpaceAR(collisionPoint);
             self.node.setPosition(localPoint.x, localPoint.y);
-            console.log("old ", localPoint);
             self.node.angle;
             TiniArcher_GameView_1.default.instance.resetBg();
+            console.log('background di chuyen', TiniArcher_GameView_1.default.instance.isBgMove);
         }
     };
     TiniArcher_Collider = __decorate([

@@ -5,21 +5,21 @@
       "main": true,
       "url": "app://editor/index.html",
       "windowType": "dockable",
-      "x": -8,
-      "y": -8,
+      "x": 184,
+      "y": 64,
       "width": 1552,
       "height": 840,
       "layout": {
         "type": "dock-h",
         "children": [
           {
-            "width": 365,
-            "height": 724.6000366210938,
+            "width": 369,
+            "height": 755,
             "type": "dock-v",
             "children": [
               {
-                "width": 365,
-                "height": 250.0124969482422,
+                "width": 369,
+                "height": 260,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -27,8 +27,8 @@
                 ]
               },
               {
-                "width": 365,
-                "height": 471.5874938964844,
+                "width": 369,
+                "height": 492,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -38,38 +38,22 @@
             ]
           },
           {
-            "width": 801,
-            "height": 724.6000366210938,
+            "width": 809,
+            "height": 755,
             "type": "dock-v",
             "children": [
               {
-                "width": 801,
-                "height": 378.4375,
-                "type": "dock-h",
+                "width": 809,
+                "height": 486,
+                "type": "panel",
+                "active": 0,
                 "children": [
-                  {
-                    "width": 478.9875183105469,
-                    "height": 378.4375,
-                    "type": "panel",
-                    "active": 0,
-                    "children": [
-                      "scene"
-                    ]
-                  },
-                  {
-                    "width": 319,
-                    "height": 378.4375,
-                    "type": "panel",
-                    "active": 0,
-                    "children": [
-                      "node-library"
-                    ]
-                  }
+                  "scene"
                 ]
               },
               {
-                "width": 801,
-                "height": 343.1499938964844,
+                "width": 809,
+                "height": 266,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -81,13 +65,14 @@
             ]
           },
           {
-            "width": 364,
-            "height": 724.6000366210938,
+            "width": 368,
+            "height": 755,
             "type": "panel",
             "active": 0,
             "children": [
               "inspector",
-              "cocos-services"
+              "cocos-services",
+              "node-library"
             ]
           }
         ]

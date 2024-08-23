@@ -17,6 +17,8 @@ export default class TiniArcher_BackGround extends cc.Component {
     @property(cc.Node)
     nBullseye: cc.Node = null;
 
+    isStop: boolean = false;
+
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {}
@@ -26,23 +28,35 @@ export default class TiniArcher_BackGround extends cc.Component {
     }
 
     update (dt) {
-        if(!TiniArcher_GameView.instance.isBgMove) return;
-        if(this.node.x <= -1960 ) {
-            this.resetPos();
+        // if(!TiniArcher_GameView.instance.isBgMove) return;
+        if (TiniArcher_GameView.instance.isStop) {
+            return
         }
-
-        if(this.idBg == TiniArcher_GameView.instance.indexBg) {
-            console.log("idBg ", this.idBg);
-            if(this.node.x <= 0) {
-                this.node.x = 0;
-                TiniArcher_GameView.instance.isBgMove = false;
+        if (TiniArcher_GameView.instance.isBgMove) {
+            this.node.x -= 5;
+            if (this.node.x == -960) {
+                TiniArcher_GameView.instance.isStop = true;
+                this.resetPos()
             }
         }
-        this.node.x -= 5;
+
+        // if(this.node.x <= -1920 ) {
+        //     this.resetPos();
+        // }
+
+        // console.log("idBg ", this.idBg);
+        // console.log("idBg2 ", TiniArcher_GameView.instance.indexBg);
+        // if(this.idBg == TiniArcher_GameView.instance.indexBg) {
+        //     if(this.node.x <= 0) {
+        //         this.node.x = 0;
+        //         TiniArcher_GameView.instance.isBgMove = false;
+        //     }
+        // }
+        
     }
 
     resetPos() {
-        this.node.x = 980;
-        console.log("Nền đã đặt lại vị trí:",this.idBg, this.node.x);
+        this.node.x = 1920;
+        // console.log("Nền đã đặt lại vị trí:",this.idBg, this.node.x);
     }
 }
