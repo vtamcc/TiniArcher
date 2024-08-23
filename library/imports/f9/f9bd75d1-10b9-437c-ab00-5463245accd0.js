@@ -44,10 +44,12 @@ var TiniArcher_Collider = /** @class */ (function (_super) {
     TiniArcher_Collider.prototype.onCollisionEnter = function (other, self) {
         if (other.tag == 1) {
             TiniArcher_GameView_1.default.instance.isArrowFlying = false;
+            TiniArcher_GameView_1.default.instance.isTarget = true;
             TiniArcher_GameView_1.default.instance.nTrajectoryNode.removeAllChildren();
             self.node.parent = other.node;
             var collisionPoint = self.world.aabb.center;
             TiniArcher_GameView_1.default.instance.shakeTarget(TiniArcher_GameView_1.default.instance.nStick);
+            TiniArcher_GameView_1.default.instance.updateStatus();
             var localPoint = other.node.convertToNodeSpaceAR(collisionPoint);
             self.node.setPosition(localPoint.x, localPoint.y);
             self.node.angle;

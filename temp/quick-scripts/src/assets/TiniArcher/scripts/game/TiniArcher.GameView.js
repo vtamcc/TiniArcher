@@ -40,6 +40,7 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         _this.nTrajectoryNode = null;
         _this.pfCircle = null;
         _this.pfArrow = null;
+        _this.listStatus = [];
         _this.maxForce = 1000;
         _this.maxAngle = 45;
         _this.startForce = 0;
@@ -54,6 +55,8 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         _this.trajectoryIndex = 0; // Chỉ số hiện tại trong quỹ đạo
         _this.currentArrow = null;
         _this.indexBg = 0;
+        _this.isTarget = false;
+        _this.canClick = true;
         return _this;
     }
     TiniArcher_GameView_1 = TiniArcher_GameView;
@@ -67,9 +70,11 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
     };
     TiniArcher_GameView.prototype.onTouchStart = function (event) {
         this.isCharging = true;
+        console.log("Bắt đầu kéo cung");
     };
     TiniArcher_GameView.prototype.onTouchEnd = function (event) {
         this.isCharging = false;
+        this.canClick = false;
         this.nTrajectoryNode.removeAllChildren();
         this.trajectoryCircle(this.updateTrajectory(this.currentForce, this.currentAngle));
         this.updatePowerBar();
@@ -135,11 +140,32 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         // if(this.indexBg > 2) {
         //     this.indexBg = 0;
         // }
+        this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
         this.scheduleOnce(function () {
             _this.isBgMove = false;
             _this.isStop = false;
             _this.spawArrow();
+            _this.node.on(cc.Node.EventType.TOUCH_START, _this.onTouchStart, _this);
+            _this.node.on(cc.Node.EventType.TOUCH_END, _this.onTouchEnd, _this);
         }, 3.5);
+    };
+    TiniArcher_GameView.prototype.updateStatus = function () {
+        var _this = this;
+        if (this.isTarget) {
+            this.listStatus[1].active = true;
+            this.scheduleOnce(function () {
+                _this.listStatus[1].active = false;
+            }, 0.6);
+            this.isTarget = false;
+        }
+        else {
+            console.log("vao else");
+            this.listStatus[0].active = true;
+            this.scheduleOnce(function () {
+                _this.listStatus[0].active = false;
+            }, 0.6);
+            //this.isTarget = false;
+        }
     };
     TiniArcher_GameView.prototype.shakeTarget = function (target) {
         var shakeDuration = 0.25; // Thời gian của mỗi bước rung
@@ -160,6 +186,7 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
             this.updateArrowPos();
         }
         else if (this.isArrowFlying) {
+            this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
             if (this.trajectoryIndex < this.trajectoryPoints.length - 1) {
                 var currentPoint = this.trajectoryPoints[this.trajectoryIndex];
                 var nextPoint = this.trajectoryPoints[this.trajectoryIndex + 1];
@@ -172,7 +199,11 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
             else {
                 this.isArrowFlying = false;
                 this.resetBg();
+                this.canClick = true;
+                this.updateStatus();
             }
+            this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
+            this.node.off(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
         }
         else {
             this.currentForce = Math.max(this.currentForce - 1000 * dt, this.startForce);
@@ -200,6 +231,9 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
     __decorate([
         property(cc.Prefab)
     ], TiniArcher_GameView.prototype, "pfArrow", void 0);
+    __decorate([
+        property(cc.Node)
+    ], TiniArcher_GameView.prototype, "listStatus", void 0);
     TiniArcher_GameView = TiniArcher_GameView_1 = __decorate([
         ccclass
     ], TiniArcher_GameView);

@@ -5,21 +5,21 @@
       "main": true,
       "url": "app://editor/index.html",
       "windowType": "dockable",
-      "x": 184,
-      "y": 64,
-      "width": 1552,
-      "height": 840,
+      "x": 0,
+      "y": 25,
+      "width": 1920,
+      "height": 996,
       "layout": {
         "type": "dock-h",
         "children": [
           {
-            "width": 369,
-            "height": 755,
+            "width": 457,
+            "height": 911,
             "type": "dock-v",
             "children": [
               {
-                "width": 369,
-                "height": 260,
+                "width": 457,
+                "height": 314,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -27,8 +27,8 @@
                 ]
               },
               {
-                "width": 369,
-                "height": 492,
+                "width": 457,
+                "height": 593.984375,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -38,13 +38,13 @@
             ]
           },
           {
-            "width": 809,
-            "height": 755,
+            "width": 1001,
+            "height": 911,
             "type": "dock-v",
             "children": [
               {
-                "width": 809,
-                "height": 486,
+                "width": 1001,
+                "height": 587,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -52,8 +52,8 @@
                 ]
               },
               {
-                "width": 809,
-                "height": 266,
+                "width": 1001,
+                "height": 321,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -65,8 +65,8 @@
             ]
           },
           {
-            "width": 368,
-            "height": 755,
+            "width": 456,
+            "height": 911,
             "type": "panel",
             "active": 0,
             "children": [
@@ -81,12 +81,12 @@
         "hierarchy",
         "assets",
         "scene",
-        "node-library",
         "console",
         "timeline",
         "game-window",
         "inspector",
-        "cocos-services"
+        "cocos-services",
+        "node-library"
       ]
     },
     " common-asset-worker-worker": {}

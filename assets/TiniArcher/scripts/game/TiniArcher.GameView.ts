@@ -30,6 +30,8 @@ export default class TiniArcher_GameView extends cc.Component {
     @property(cc.Prefab)
     pfArrow: cc.Prefab = null;
 
+    @property(cc.Node)
+    listStatus: cc.Node[] = [];
     maxForce = 1000;
     maxAngle = 45;
     startForce = 0;
@@ -44,6 +46,8 @@ export default class TiniArcher_GameView extends cc.Component {
     trajectoryIndex = 0;  // Chỉ số hiện tại trong quỹ đạo
     currentArrow = null;
     indexBg = 0;
+    isTarget = false;
+    canClick = true;
 
 
     onLoad() {
@@ -57,11 +61,13 @@ export default class TiniArcher_GameView extends cc.Component {
 
     onTouchStart(event: cc.Touch) {
         this.isCharging = true;
+        console.log("Bắt đầu kéo cung");
     }
 
 
     onTouchEnd(event: cc.Touch) {
         this.isCharging = false;
+        this.canClick = false
         this.nTrajectoryNode.removeAllChildren();
         this.trajectoryCircle(this.updateTrajectory(this.currentForce, this.currentAngle));
         this.updatePowerBar();
@@ -71,6 +77,7 @@ export default class TiniArcher_GameView extends cc.Component {
         //this.shootArrow(this.currentForce,this.currentAngle);
 
     }
+   
 
     spawArrow() {
         if (this.currentArrow) {
@@ -137,14 +144,35 @@ export default class TiniArcher_GameView extends cc.Component {
         // if(this.indexBg > 2) {
         //     this.indexBg = 0;
         // }
-
-
+       
+        this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
         this.scheduleOnce(() => {
             this.isBgMove = false;
             this.isStop = false;
             this.spawArrow();
+            this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
+            this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this)
         },3.5)
     }
+
+    updateStatus() {
+        if(this.isTarget) {
+            this.listStatus[1].active = true;
+            this.scheduleOnce(() => {
+                this.listStatus[1].active = false;
+            },0.6)
+            this.isTarget = false;
+        }else{
+            console.log("vao else");
+            this.listStatus[0].active = true;
+            this.scheduleOnce(() => {
+                this.listStatus[0].active = false;
+            },0.6)
+            //this.isTarget = false;
+        }
+
+    }
+
     shakeTarget(target: cc.Node) {
         let shakeDuration = 0.25; // Thời gian của mỗi bước rung
         let angles = [-2, 2, -1.5, 1.5, -1, 1]; // Các giá trị góc rung giảm dần
@@ -166,6 +194,7 @@ export default class TiniArcher_GameView extends cc.Component {
             this.updateAngleArrow(this.currentAngle)
             this.updateArrowPos();
         } else if (this.isArrowFlying) {
+            this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
             if (this.trajectoryIndex < this.trajectoryPoints.length - 1) {
                 let currentPoint = this.trajectoryPoints[this.trajectoryIndex];
                 let nextPoint = this.trajectoryPoints[this.trajectoryIndex + 1];
@@ -174,18 +203,20 @@ export default class TiniArcher_GameView extends cc.Component {
                 let angle = Math.atan2(direction.y, direction.x) * 180 / Math.PI;
                 this.currentArrow.angle = angle;
                 this.trajectoryIndex++;
+               
             } else {
                 this.isArrowFlying = false;
                 this.resetBg();
-                
+                this.canClick = true;
+                this.updateStatus();
             }
+            this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
+            this.node.off(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this)
         } 
         else {
             this.currentForce = Math.max(this.currentForce - 1000 * dt, this.startForce);
             this.currentAngle = Math.max(this.currentAngle - 45 * dt, this.startAngle);
             
-           
-
         }
         this.updatePowerBar();
     }
