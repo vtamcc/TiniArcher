@@ -56,7 +56,7 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         _this.currentArrow = null;
         _this.indexBg = 0;
         _this.isTarget = false;
-        _this.canClick = true;
+        _this.isCancer = true;
         return _this;
     }
     TiniArcher_GameView_1 = TiniArcher_GameView;
@@ -68,13 +68,26 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
         this.spawArrow();
     };
+    TiniArcher_GameView.prototype.resetBg = function () {
+        var _this = this;
+        this.isBgMove = true;
+        this.scheduleOnce(function () {
+            _this.isBgMove = false;
+            _this.isStop = false;
+            _this.spawArrow();
+            _this.isCancer = true;
+            console.log("click lai roi ", _this.isCancer);
+        }, 3.5);
+    };
     TiniArcher_GameView.prototype.onTouchStart = function (event) {
-        this.isCharging = true;
-        console.log("Bắt đầu kéo cung");
+        if (this.isCancer)
+            this.isCharging = true;
+        console.log("Bắt đầu kéo cung", this.isCancer);
     };
     TiniArcher_GameView.prototype.onTouchEnd = function (event) {
+        if (!this.isCancer)
+            return;
         this.isCharging = false;
-        this.canClick = false;
         this.nTrajectoryNode.removeAllChildren();
         this.trajectoryCircle(this.updateTrajectory(this.currentForce, this.currentAngle));
         this.updatePowerBar();
@@ -132,23 +145,6 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
     TiniArcher_GameView.prototype.resetArrowPosition = function () {
         this.currentArrow.setPosition(this.nArrow.x, this.currentAngle);
     };
-    TiniArcher_GameView.prototype.resetBg = function () {
-        var _this = this;
-        this.isBgMove = true;
-        // console.log("di chuyen ", this.isBgMove);
-        // this.indexBg++;
-        // if(this.indexBg > 2) {
-        //     this.indexBg = 0;
-        // }
-        this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
-        this.scheduleOnce(function () {
-            _this.isBgMove = false;
-            _this.isStop = false;
-            _this.spawArrow();
-            _this.node.on(cc.Node.EventType.TOUCH_START, _this.onTouchStart, _this);
-            _this.node.on(cc.Node.EventType.TOUCH_END, _this.onTouchEnd, _this);
-        }, 3.5);
-    };
     TiniArcher_GameView.prototype.updateStatus = function () {
         var _this = this;
         if (this.isTarget) {
@@ -186,7 +182,7 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
             this.updateArrowPos();
         }
         else if (this.isArrowFlying) {
-            this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
+            //this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
             if (this.trajectoryIndex < this.trajectoryPoints.length - 1) {
                 var currentPoint = this.trajectoryPoints[this.trajectoryIndex];
                 var nextPoint = this.trajectoryPoints[this.trajectoryIndex + 1];
@@ -198,12 +194,13 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
             }
             else {
                 this.isArrowFlying = false;
+                this.isCancer = false;
                 this.resetBg();
-                this.canClick = true;
                 this.updateStatus();
             }
-            this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
-            this.node.off(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
+            this.isCancer = false;
+            console.log("khong click dc ", this.isCancer);
+            //this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
         }
         else {
             this.currentForce = Math.max(this.currentForce - 1000 * dt, this.startForce);

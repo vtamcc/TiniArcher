@@ -47,7 +47,8 @@ export default class TiniArcher_GameView extends cc.Component {
     currentArrow = null;
     indexBg = 0;
     isTarget = false;
-    canClick = true;
+
+    isCancer = true;
 
 
     onLoad() {
@@ -59,15 +60,29 @@ export default class TiniArcher_GameView extends cc.Component {
         this.spawArrow();
     }
 
+    resetBg() {
+        this.isBgMove = true;
+        this.scheduleOnce(() => {
+            this.isBgMove = false;
+            this.isStop = false;
+            this.spawArrow();
+            
+            this.isCancer = true;
+            console.log("click lai roi ", this.isCancer);
+        },3.5)
+        
+    }
+
     onTouchStart(event: cc.Touch) {
+        if(this.isCancer)
         this.isCharging = true;
-        console.log("Bắt đầu kéo cung");
+        console.log("Bắt đầu kéo cung",this.isCancer);
     }
 
 
     onTouchEnd(event: cc.Touch) {
+        if(!this.isCancer) return;
         this.isCharging = false;
-        this.canClick = false
         this.nTrajectoryNode.removeAllChildren();
         this.trajectoryCircle(this.updateTrajectory(this.currentForce, this.currentAngle));
         this.updatePowerBar();
@@ -137,23 +152,7 @@ export default class TiniArcher_GameView extends cc.Component {
         this.currentArrow.setPosition(this.nArrow.x, this.currentAngle);
     }
 
-    resetBg() {
-        this.isBgMove = true;
-        // console.log("di chuyen ", this.isBgMove);
-        // this.indexBg++;
-        // if(this.indexBg > 2) {
-        //     this.indexBg = 0;
-        // }
-       
-        this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
-        this.scheduleOnce(() => {
-            this.isBgMove = false;
-            this.isStop = false;
-            this.spawArrow();
-            this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
-            this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this)
-        },3.5)
-    }
+
 
     updateStatus() {
         if(this.isTarget) {
@@ -194,7 +193,7 @@ export default class TiniArcher_GameView extends cc.Component {
             this.updateAngleArrow(this.currentAngle)
             this.updateArrowPos();
         } else if (this.isArrowFlying) {
-            this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
+            //this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
             if (this.trajectoryIndex < this.trajectoryPoints.length - 1) {
                 let currentPoint = this.trajectoryPoints[this.trajectoryIndex];
                 let nextPoint = this.trajectoryPoints[this.trajectoryIndex + 1];
@@ -206,12 +205,13 @@ export default class TiniArcher_GameView extends cc.Component {
                
             } else {
                 this.isArrowFlying = false;
+                this.isCancer = false;
                 this.resetBg();
-                this.canClick = true;
                 this.updateStatus();
             }
-            this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
-            this.node.off(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this)
+            this.isCancer = false
+            console.log("khong click dc ", this.isCancer);
+            //this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
         } 
         else {
             this.currentForce = Math.max(this.currentForce - 1000 * dt, this.startForce);
