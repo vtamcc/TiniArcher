@@ -21,10 +21,19 @@ export default class TiniArcher_BackGround extends cc.Component {
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {}
+    onLoad () {
+        this.ramdomPosY();
+    }
 
     start () {
 
+    }
+
+    ramdomPosY() {
+        let random = Math.floor(Math.random() * 8);
+        let randomValue = TiniArcher_GameView.instance.ramdomPosY[random];
+        this.nBullseye.setPosition(0,randomValue);
+        console.log("random", randomValue);
     }
 
     update (dt) {
@@ -37,6 +46,7 @@ export default class TiniArcher_BackGround extends cc.Component {
             if (this.node.x == -960) {
                 TiniArcher_GameView.instance.isStop = true;
                 this.resetPos()
+                this.ramdomPosY();
             }
         }
 

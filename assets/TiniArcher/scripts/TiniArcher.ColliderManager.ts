@@ -6,6 +6,7 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
 import TiniArcher_GameView from "./game/TiniArcher.GameView";
+import { Global } from "./TiniArcher.Global";
 
 const { ccclass, property } = cc._decorator;
 
@@ -16,6 +17,7 @@ export default class TiniArcher_Collider extends cc.Component {
 
     onLoad() {
         cc.director.getCollisionManager().enabled = true;
+        cc.director.getCollisionManager().enabledDebugDraw = true;  
     }
 
     start() {
@@ -34,9 +36,22 @@ export default class TiniArcher_Collider extends cc.Component {
             let localPoint = other.node.convertToNodeSpaceAR(collisionPoint);
             self.node.setPosition(localPoint.x, localPoint.y);
             self.node.angle
-           TiniArcher_GameView.instance.resetBg();
+            TiniArcher_GameView.instance.resetBg();
            console.log( 'background di chuyen',TiniArcher_GameView.instance.isBgMove)
 
+        }
+
+        if(other.tag == 2) {
+            TiniArcher_GameView.instance.isArrowFlying = false;
+            TiniArcher_GameView.instance.isMiss = true;
+            self.node.parent = other.node;
+            let collisionPoint = self.world.aabb.center;
+            let localPoint = other.node.convertToNodeSpaceAR(collisionPoint);
+            self.node.setPosition(localPoint.x, localPoint.y);
+            self.node.angle
+            TiniArcher_GameView.instance.resetBg();
+            TiniArcher_GameView.instance.updateStatus();
+            console.log("ban vao cot ");
         }
 
     }

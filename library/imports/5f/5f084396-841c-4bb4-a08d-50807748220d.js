@@ -29,6 +29,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var TiniArcher_Global_1 = require("../TiniArcher.Global");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var TiniArcher_GameView = /** @class */ (function (_super) {
     __extends(TiniArcher_GameView, _super);
@@ -41,6 +42,9 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         _this.pfCircle = null;
         _this.pfArrow = null;
         _this.listStatus = [];
+        _this.lbArrow = null;
+        _this.lbScore = null;
+        _this.lbBest = null;
         _this.maxForce = 1000;
         _this.maxAngle = 45;
         _this.startForce = 0;
@@ -57,6 +61,8 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         _this.indexBg = 0;
         _this.isTarget = false;
         _this.isCancer = true;
+        _this.isMiss = false;
+        _this.ramdomPosY = [-80, 60, 40, 20, 0, 20, 40, 60, 80];
         return _this;
     }
     TiniArcher_GameView_1 = TiniArcher_GameView;
@@ -67,6 +73,8 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
         this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
         this.spawArrow();
+        this.updateNumberArrow();
+        this.updateLbScore();
     };
     TiniArcher_GameView.prototype.resetBg = function () {
         var _this = this;
@@ -76,13 +84,11 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
             _this.isStop = false;
             _this.spawArrow();
             _this.isCancer = true;
-            console.log("click lai roi ", _this.isCancer);
         }, 3.5);
     };
     TiniArcher_GameView.prototype.onTouchStart = function (event) {
         if (this.isCancer)
             this.isCharging = true;
-        console.log("Bắt đầu kéo cung", this.isCancer);
     };
     TiniArcher_GameView.prototype.onTouchEnd = function (event) {
         if (!this.isCancer)
@@ -142,19 +148,38 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
         //let newX = this.startAngle - (this.currentAngle / this.maxAngle) * 5;
         this.currentArrow.setPosition(this.nArrow.x, newY);
     };
+    TiniArcher_GameView.prototype.updateLbScore = function () {
+        this.lbScore.string = TiniArcher_Global_1.Global.score + '';
+    };
+    TiniArcher_GameView.prototype.updateNumberArrow = function () {
+        this.lbArrow.string = TiniArcher_Global_1.Global.numberArrow + ' ';
+    };
     TiniArcher_GameView.prototype.resetArrowPosition = function () {
         this.currentArrow.setPosition(this.nArrow.x, this.currentAngle);
     };
     TiniArcher_GameView.prototype.updateStatus = function () {
         var _this = this;
         if (this.isTarget) {
+            TiniArcher_Global_1.Global.score++;
+            this.updateLbScore();
             this.listStatus[1].active = true;
             this.scheduleOnce(function () {
                 _this.listStatus[1].active = false;
             }, 0.6);
             this.isTarget = false;
         }
+        if (this.isMiss) {
+            TiniArcher_Global_1.Global.numberArrow--;
+            this.updateNumberArrow();
+            this.listStatus[2].active = true;
+            this.scheduleOnce(function () {
+                _this.listStatus[2].active = false;
+            }, 0.6);
+            this.isMiss = false;
+        }
         else {
+            TiniArcher_Global_1.Global.numberArrow--;
+            this.updateNumberArrow();
             console.log("vao else");
             this.listStatus[0].active = true;
             this.scheduleOnce(function () {
@@ -199,7 +224,6 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
                 this.updateStatus();
             }
             this.isCancer = false;
-            console.log("khong click dc ", this.isCancer);
             //this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
         }
         else {
@@ -231,6 +255,15 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
     __decorate([
         property(cc.Node)
     ], TiniArcher_GameView.prototype, "listStatus", void 0);
+    __decorate([
+        property(cc.Label)
+    ], TiniArcher_GameView.prototype, "lbArrow", void 0);
+    __decorate([
+        property(cc.Label)
+    ], TiniArcher_GameView.prototype, "lbScore", void 0);
+    __decorate([
+        property(cc.Label)
+    ], TiniArcher_GameView.prototype, "lbBest", void 0);
     TiniArcher_GameView = TiniArcher_GameView_1 = __decorate([
         ccclass
     ], TiniArcher_GameView);

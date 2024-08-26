@@ -5,6 +5,8 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
+import { Global } from "../TiniArcher.Global";
+
 
 
 const { ccclass, property } = cc._decorator;
@@ -32,6 +34,15 @@ export default class TiniArcher_GameView extends cc.Component {
 
     @property(cc.Node)
     listStatus: cc.Node[] = [];
+
+    @property(cc.Label)
+    lbArrow: cc.Label = null;
+
+    @property(cc.Label)
+    lbScore: cc.Label = null;
+
+    @property(cc.Label)
+    lbBest: cc.Label = null;
     maxForce = 1000;
     maxAngle = 45;
     startForce = 0;
@@ -47,10 +58,9 @@ export default class TiniArcher_GameView extends cc.Component {
     currentArrow = null;
     indexBg = 0;
     isTarget = false;
-
     isCancer = true;
-
-
+    isMiss = false;
+    ramdomPosY = [-80,60,40,20,0,20,40,60,80];
     onLoad() {
         TiniArcher_GameView.instance = this;
         cc.director.getPhysicsManager().enabled = true;
@@ -58,6 +68,8 @@ export default class TiniArcher_GameView extends cc.Component {
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
         this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this)
         this.spawArrow();
+        this.updateNumberArrow();
+        this.updateLbScore();
     }
 
     resetBg() {
@@ -66,9 +78,8 @@ export default class TiniArcher_GameView extends cc.Component {
             this.isBgMove = false;
             this.isStop = false;
             this.spawArrow();
-            
             this.isCancer = true;
-            console.log("click lai roi ", this.isCancer);
+           
         },3.5)
         
     }
@@ -76,7 +87,6 @@ export default class TiniArcher_GameView extends cc.Component {
     onTouchStart(event: cc.Touch) {
         if(this.isCancer)
         this.isCharging = true;
-        console.log("Bắt đầu kéo cung",this.isCancer);
     }
 
 
@@ -148,20 +158,39 @@ export default class TiniArcher_GameView extends cc.Component {
         //let newX = this.startAngle - (this.currentAngle / this.maxAngle) * 5;
         this.currentArrow.setPosition(this.nArrow.x, newY);
     }
+
+    updateLbScore() {
+        this.lbScore.string = Global.score + '';
+    }
+
+    updateNumberArrow() {
+        this.lbArrow.string = Global.numberArrow + ' ';
+    }
     resetArrowPosition() {
         this.currentArrow.setPosition(this.nArrow.x, this.currentAngle);
     }
 
-
-
     updateStatus() {
         if(this.isTarget) {
+            Global.score++;
+            this.updateLbScore();
             this.listStatus[1].active = true;
             this.scheduleOnce(() => {
                 this.listStatus[1].active = false;
             },0.6)
             this.isTarget = false;
-        }else{
+        }if(this.isMiss) {
+            Global.numberArrow--;
+            this.updateNumberArrow();
+            this.listStatus[2].active = true;
+            this.scheduleOnce(() => {
+                this.listStatus[2].active = false
+            },0.6)
+            this.isMiss = false;
+        }
+        else{
+            Global.numberArrow--;
+            this.updateNumberArrow();
             console.log("vao else");
             this.listStatus[0].active = true;
             this.scheduleOnce(() => {
@@ -210,7 +239,6 @@ export default class TiniArcher_GameView extends cc.Component {
                 this.updateStatus();
             }
             this.isCancer = false
-            console.log("khong click dc ", this.isCancer);
             //this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
         } 
         else {

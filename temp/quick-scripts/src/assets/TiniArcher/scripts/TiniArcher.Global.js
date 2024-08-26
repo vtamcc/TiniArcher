@@ -8,6 +8,8 @@ exports.Global = void 0;
 var Global = /** @class */ (function () {
     function Global() {
     }
+    Global.score = 0;
+    Global.numberArrow = 6;
     return Global;
 }());
 exports.Global = Global;

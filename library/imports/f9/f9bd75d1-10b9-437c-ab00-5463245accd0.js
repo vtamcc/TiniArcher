@@ -38,6 +38,7 @@ var TiniArcher_Collider = /** @class */ (function (_super) {
     }
     TiniArcher_Collider.prototype.onLoad = function () {
         cc.director.getCollisionManager().enabled = true;
+        cc.director.getCollisionManager().enabledDebugDraw = true;
     };
     TiniArcher_Collider.prototype.start = function () {
     };
@@ -55,6 +56,18 @@ var TiniArcher_Collider = /** @class */ (function (_super) {
             self.node.angle;
             TiniArcher_GameView_1.default.instance.resetBg();
             console.log('background di chuyen', TiniArcher_GameView_1.default.instance.isBgMove);
+        }
+        if (other.tag == 2) {
+            TiniArcher_GameView_1.default.instance.isArrowFlying = false;
+            TiniArcher_GameView_1.default.instance.isMiss = true;
+            self.node.parent = other.node;
+            var collisionPoint = self.world.aabb.center;
+            var localPoint = other.node.convertToNodeSpaceAR(collisionPoint);
+            self.node.setPosition(localPoint.x, localPoint.y);
+            self.node.angle;
+            TiniArcher_GameView_1.default.instance.resetBg();
+            TiniArcher_GameView_1.default.instance.updateStatus();
+            console.log("ban vao cot ");
         }
     };
     TiniArcher_Collider = __decorate([

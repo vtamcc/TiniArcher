@@ -41,8 +41,16 @@ var TiniArcher_BackGround = /** @class */ (function (_super) {
         return _this;
     }
     // LIFE-CYCLE CALLBACKS:
-    // onLoad () {}
+    TiniArcher_BackGround.prototype.onLoad = function () {
+        this.ramdomPosY();
+    };
     TiniArcher_BackGround.prototype.start = function () {
+    };
+    TiniArcher_BackGround.prototype.ramdomPosY = function () {
+        var random = Math.floor(Math.random() * 8);
+        var randomValue = TiniArcher_GameView_1.default.instance.ramdomPosY[random];
+        this.nBullseye.setPosition(0, randomValue);
+        console.log("random", randomValue);
     };
     TiniArcher_BackGround.prototype.update = function (dt) {
         // if(!TiniArcher_GameView.instance.isBgMove) return;
@@ -54,6 +62,7 @@ var TiniArcher_BackGround = /** @class */ (function (_super) {
             if (this.node.x == -960) {
                 TiniArcher_GameView_1.default.instance.isStop = true;
                 this.resetPos();
+                this.ramdomPosY();
             }
         }
         // if(this.node.x <= -1920 ) {
