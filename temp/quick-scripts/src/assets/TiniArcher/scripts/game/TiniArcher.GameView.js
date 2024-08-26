@@ -154,6 +154,12 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
     TiniArcher_GameView.prototype.updateNumberArrow = function () {
         this.lbArrow.string = TiniArcher_Global_1.Global.numberArrow + ' ';
     };
+    TiniArcher_GameView.prototype.checkArrowTarget = function () {
+        if (!this.isMiss) {
+            TiniArcher_Global_1.Global.numberArrow--;
+            this.updateNumberArrow();
+        }
+    };
     TiniArcher_GameView.prototype.resetArrowPosition = function () {
         this.currentArrow.setPosition(this.nArrow.x, this.currentAngle);
     };
@@ -168,23 +174,21 @@ var TiniArcher_GameView = /** @class */ (function (_super) {
             }, 0.6);
             this.isTarget = false;
         }
-        if (this.isMiss) {
-            TiniArcher_Global_1.Global.numberArrow--;
-            this.updateNumberArrow();
+        else if (this.isMiss) {
             this.listStatus[2].active = true;
             this.scheduleOnce(function () {
                 _this.listStatus[2].active = false;
             }, 0.6);
             this.isMiss = false;
+            this.checkArrowTarget();
         }
         else {
-            TiniArcher_Global_1.Global.numberArrow--;
-            this.updateNumberArrow();
             console.log("vao else");
             this.listStatus[0].active = true;
             this.scheduleOnce(function () {
                 _this.listStatus[0].active = false;
             }, 0.6);
+            this.checkArrowTarget();
             //this.isTarget = false;
         }
     };

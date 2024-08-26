@@ -166,6 +166,14 @@ export default class TiniArcher_GameView extends cc.Component {
     updateNumberArrow() {
         this.lbArrow.string = Global.numberArrow + ' ';
     }
+
+    checkArrowTarget() {
+        if(!this.isMiss) {
+            Global.numberArrow--;
+            this.updateNumberArrow();
+        }
+      
+    }
     resetArrowPosition() {
         this.currentArrow.setPosition(this.nArrow.x, this.currentAngle);
     }
@@ -179,26 +187,24 @@ export default class TiniArcher_GameView extends cc.Component {
                 this.listStatus[1].active = false;
             },0.6)
             this.isTarget = false;
-        }if(this.isMiss) {
-            Global.numberArrow--;
-            this.updateNumberArrow();
+        }else if(this.isMiss) {
             this.listStatus[2].active = true;
             this.scheduleOnce(() => {
                 this.listStatus[2].active = false
             },0.6)
             this.isMiss = false;
+            this.checkArrowTarget();
         }
         else{
-            Global.numberArrow--;
-            this.updateNumberArrow();
             console.log("vao else");
             this.listStatus[0].active = true;
             this.scheduleOnce(() => {
                 this.listStatus[0].active = false;
             },0.6)
+            this.checkArrowTarget();
             //this.isTarget = false;
         }
-
+       
     }
 
     shakeTarget(target: cc.Node) {
@@ -237,6 +243,7 @@ export default class TiniArcher_GameView extends cc.Component {
                 this.isCancer = false;
                 this.resetBg();
                 this.updateStatus();
+
             }
             this.isCancer = false
             //this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this)
